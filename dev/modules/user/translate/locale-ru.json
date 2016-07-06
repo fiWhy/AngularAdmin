@@ -1,0 +1,9 @@
+{
+    "LOGIN_FORM": {
+        "USERNAME_PLACEHOLDER": "Логин",
+        "PASSWORD_PLACEHOLDER": "Пароль",
+        "REMEMBER": "Запомнить меня",
+        "LOGIN": "Войти",
+        "FORGOT": "Забыли пароль?"
+    }
+}

@@ -1,0 +1,79 @@
+﻿ <!-- Form with placeholder -->
+<section id="content">
+
+    <breadcrumps data-items="postsUpdate.breadcrumps"></breadcrumps>
+    <div class="container">
+        <div class="section">
+            <form>
+                <div class="md-toolbar-tools">
+                    <h2 data-ng-bind="postsUpdate.item.fields.ru.title.value"></h2>
+                    <span flex></span><md-button class="md-fab green" data-ng-click="postsUpdate.update();">
+                        <md-icon class="deed-icon">check_circle</md-icon>
+                    </md-button>
+                </div>
+                <md-tabs md-dynamic-height md-border-bottom>
+                    <md-tab label="Основные настройки">
+                        <md-content class="md-padding">
+                            <md-input-container md-no-float class="md-block">
+                                <label>Ссылка</label>
+                                <input data-ng-model="postsUpdate.item.slug">
+                            </md-input-container>
+                            <md-input-container md-no-float class="md-block">
+                                <label>Изображение</label>
+                                <elfinder data-model="postsUpdate.item.image">
+                                    <img style="width:100%;" data-ng-src="{{  postsUpdate.item.image }}" />
+                                </elfinder>
+                            </md-input-container>
+
+                            <md-input-container md-no-float class="md-block">
+                                <label>Фон</label>
+                                <elfinder data-model="postsUpdate.item.bannerImage">
+                                    <img style="width:100%;" data-ng-src="{{  postsUpdate.item.bannerImage }}" />
+                                </elfinder>
+                            </md-input-container>
+
+
+                            <md-input-container md-no-float class="md-block">
+                                <label>Тип поста</label>
+                                <md-select required
+                                           data-ng-model="postsUpdate.item.type_id"
+                                           ng-model-options="{trackBy: '$value.id'}">
+                                    <md-option data-ng-repeat="type in postsUpdate.postTypes"
+                                               value="{{ type.id }}"
+                                               data-ng-bind="type.name">
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </md-content>
+                    </md-tab>
+                    <md-tab data-ng-repeat="(key, language) in postsUpdate.item.fields" label="{{ key }}">
+                        <md-content class="md-padding">
+                            <div class="row">
+                                <md-input-container class="col m6">
+                                    <label>Заголовок</label>
+                                    <input data-ng-model="language.title.value">
+                                </md-input-container>
+                                <md-input-container class="col m12">
+                                    <label>Текст</label>
+                                    <editor data-model="language.content.value"></editor>
+                                </md-input-container>
+                                <md-input-container class="col m6">
+                                    <label>Мета заголовок</label>
+                                    <input data-ng-model="language.meta_title.value">
+                                </md-input-container>
+                                <md-input-container class="col m12">
+                                    <label>Ключевые слова</label>
+                                    <textarea data-ng-model="language.meta_keywords.value"></textarea>
+                                </md-input-container>
+                                <md-input-container class="col m12">
+                                    <label>Описание</label>
+                                    <textarea data-ng-model="language.meta_description.value"></textarea>
+                                </md-input-container>
+                            </div>
+                        </md-content>
+                    </md-tab>
+                </md-tabs>
+            </form>
+        </div>
+    </div>
+</section>

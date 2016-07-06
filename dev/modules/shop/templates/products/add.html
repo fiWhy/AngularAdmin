@@ -1,0 +1,156 @@
+﻿ <!-- Form with placeholder -->
+<section id="content">
+    <breadcrumps data-items="productsCreate.breadcrumps"></breadcrumps>
+    <div class="container">
+        <div class="section">
+            <form>
+                <div class="md-toolbar-tools">
+                    <h2 data-ng-bind="productsCreate.item.fields.ru.title.value"></h2>
+                    <span flex></span><md-button class="md-fab green" data-ng-click="productsCreate.create();">
+                        <md-icon class="deed-icon">check_circle</md-icon>
+                    </md-button>
+                </div>
+                <md-tabs md-dynamic-height md-border-bottom>
+                    <md-tab label="Основные настройки">
+                        <md-content class="md-padding">
+                            <md-input-container md-no-float class="md-block">
+                                <label>Ссылка</label>
+                                <input data-ng-model="productsCreate.item.slug">
+                            </md-input-container>
+                            <md-input-container md-no-float class="md-block">
+                                <label>Цена</label>
+                                <input type="number" data-ng-model="productsCreate.item.price">
+                            </md-input-container>
+                            <md-input-container md-no-float class="md-block">
+                                <label>Старая цена</label>
+                                <input type="number" data-ng-model="productsCreate.item.old_price">
+                            </md-input-container>
+                            <md-input-container>
+                                <md-switch data-ng-model="productsCreate.item.sale"
+                                           ng-true-value="'1'" ng-false-value="'0'"
+                                           aria-label="Распродажа" class="md-warn">
+                                    Распродажа
+                                </md-switch>
+                                <md-switch data-ng-model="productsCreate.item.in_stock"
+                                           ng-true-value="'1'" ng-false-value="'0'"
+                                           aria-label="В наличии" class="md-warn">
+                                    В наличии
+                                </md-switch>
+                                <md-switch data-ng-model="productsCreate.item.active"
+                                           ng-true-value="'1'" ng-false-value="'0'"
+                                           aria-label="Активный" class="md-warn">
+                                    Активный
+                                </md-switch>
+                            </md-input-container>
+                            <md-select ng-model="productsCreate.item.colors.data" multiple>
+                                <md-option ng-value="{id: color.id}"
+                                           ng-repeat="color in productsCreate.colors">
+                                    <div style="width:10px; height:10px; background-color:{{color.hex}}"></div>
+                                </md-option>
+                            </md-select>
+
+                            <!-- Main images grid -->
+                            <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
+                                          md-row-height-gt-md="1:1" md-row-height="2:2"
+                                          md-gutter="12px" md-gutter-gt-sm="8px">
+                                <md-grid-tile class="gray"
+                                              md-rowspan="3" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1">
+                                    <elfinder data-model="productsCreate.item.primary_image">
+                                        <img data-ng-src="{{  productsCreate.item.primary_image }}" />
+                                    </elfinder>
+                                    <md-grid-tile-footer>
+                                        <h3>Основное озображение</h3>
+                                    </md-grid-tile-footer>
+                                </md-grid-tile>
+
+                                <md-grid-tile class="gray"
+                                              md-rowspan="3" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1">
+                                    <elfinder data-model="productsCreate.item.secondary_image">
+                                        <img data-ng-src="{{  productsCreate.item.secondary_image }}" />
+                                    </elfinder>
+                                    <md-grid-tile-footer>
+                                        <h3>Вторичное изображение</h3>
+                                    </md-grid-tile-footer>
+                                </md-grid-tile>
+
+                                <md-grid-tile class="gray"
+                                              md-rowspan="3" md-colspan="4" md-colspan-sm="2" md-colspan-xs="1">
+                                    <elfinder data-model="productsCreate.item.background_image">
+                                        <img data-ng-src="{{  productsCreate.item.background_image }}" />
+                                    </elfinder>
+                                    <md-grid-tile-footer>
+                                        <h3>Фон</h3>
+                                    </md-grid-tile-footer>
+                                </md-grid-tile>
+
+                            </md-grid-list>
+                            <!-- End -->
+                        </md-content>
+                    </md-tab>
+
+                    <!-- Other images -->
+                    <md-tab label="Изображения">
+                        <elfinder data-callback="productsCreate.getNewImages(file)">
+                            <md-button class="md-fab green">
+                                <md-icon class="deed-icon">note_add</md-icon>
+                            </md-button>
+                        </elfinder>
+                        <div class='md-padding' layout="row" flex>
+                            <div layout="row" flex>
+                                <div class="parent"
+                                     layout="column"
+                                     data-ng-repeat="tile in productsCreate.item.images.data">
+
+                                    <md-card>
+                                        <elfinder data-model="tile.image">
+                                            <image data-ng-src="{{ tile.image }}"></image>
+                                        </elfinder>
+                                        <md-card-content class="red" data-ng-click="productsCreate.removeImage($index)">
+                                            Удалить
+                                        </md-card-content>
+                                    </md-card>
+
+                                </div>
+                            </div>
+                        </div>
+                    </md-tab>
+                    <!-- End -->
+
+
+
+                    <md-tab data-ng-repeat="(key, language) in productsCreate.languages"
+                            label="{{ language.shortcode }}">
+                        <md-content class="md-padding">
+                            <div class="row">
+                                <md-input-container class="col m6">
+                                    <label>Заголовок</label>
+                                    <input data-ng-model="productsCreate.item.fields[language.shortcode].title.value"
+                                           data-ng-init="productsCreate.item.fields[language.shortcode].title.language_id = language.id">
+                                </md-input-container>
+                                <md-input-container class="col m12">
+                                    <label>Текст</label>
+                                    <editor></editor>
+                                </md-input-container>
+                                <md-input-container class="col m6">
+                                    <label>Мета заголовок</label>
+                                    <input data-ng-model="productsCreate.item.fields[language.shortcode].meta_title.value"
+                                           data-ng-init="productsCreate.item.fields[language.shortcode].meta_title.language_id = language.id">
+                                </md-input-container>
+                                <md-input-container class="col m12">
+                                    <label>Ключевые слова</label>
+                                    <textarea data-ng-model="productsCreate.item.fields[language.shortcode].meta_keywords.value"
+                                              data-ng-init="productsCreate.item.fields[language.shortcode].meta_keywords.language_id = language.id"></textarea>
+                                </md-input-container>
+                                <md-input-container class="col m12">
+                                    <label>Описание</label>
+                                    <textarea data-ng-model="productsCreate.item.fields[language.shortcode].meta_description.value"
+                                              data-ng-init="productsCreate.item.fields[language.shortcode].meta_description.language_id = language.id"></textarea>
+                                </md-input-container>
+                            </div>
+                        </md-content>
+                    </md-tab>
+                </md-tabs>
+            </form>
+        </div>
+    </div>
+</section>

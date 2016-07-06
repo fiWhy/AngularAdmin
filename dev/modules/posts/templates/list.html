@@ -1,0 +1,70 @@
+﻿<section id="content">
+    <breadcrumps data-items="posts.breadcrumps"></breadcrumps>
+    <div class="container">
+        <div class="section">
+            <div id="table-datatables">
+                <h4 class="header">Посты</h4>
+                <div class="row">
+                    <div class="col s12 m12">
+                        <md-input-container class="md-blockcol col s12 m12">
+                            <label>
+                                Поиск:
+                            </label>
+                            <input class="col s12 m5" type="search" data-ng-model="posts.conditions.query">
+                            <md-button class="md-fab grey" data-ng-click="posts.search();">
+                                <md-icon class="deed-icon">search</md-icon>
+
+                            </md-button>
+                            <md-button class="md-fab green"
+                                       aria-label="Содать"
+                                       data-ui-sref="posts.create" ">
+                                <md-icon>note_add</md-icon>
+                            </md-button>
+                        </md-input-container>
+
+                        <elfinder>Files</elfinder>
+                        <pagination total-items="posts.pagination.total"
+                                    current-page="posts.pagination.current_page"
+                                    page-size="15"
+                                    change-page="posts.changePage(page)"
+                                    data-ng-if="posts.pagination.total"></pagination>
+
+                        <table table-widget
+                               id="data-table-simple"
+                               class="responsive-table display"
+                               cellspacing="0"
+                               data-title-translate="false"
+                               data-titles='[
+                                        "Заголовок",
+                                        "Содержание",
+                                        "Главное изображение",
+                                        "Средства"
+                                      ]'>
+                            <tr data-ng-repeat="item in posts.list">
+                                <td data-ng-bind="item.fields.ru.title.value"></td>
+                                <td data-ng-bind="item.fields.ru.content.value"></td>
+                                <td class="col m3">
+                                    <img style="max-width:150px" data-ng-src="{{ item.image }}" />
+                                </td>
+                                <td>
+                                    <md-icon class="green-text deed-icon"
+                                             data-ui-sref="posts.update({id: item.id})">mode_edit</md-icon>
+                                    |
+                                    <md-icon class="red-text deed-icon"
+                                             data-ng-click="posts.removeItem($index);">delete_forever</md-icon>
+                                </td>
+                            </tr>
+                        </table>
+                        <pagination total-items="posts.pagination.total"
+                                    current-page="posts.pagination.current_page"
+                                    page-size="15"
+                                    change-page="posts.changePage(page)"
+                                    data-ng-if="posts.pagination.total"></pagination>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,9 @@
+/node_modules
+/typings
+/dev/lib
+npm-debug.log
+debug.log
+/api
+/app
+admin.sln
+.vs

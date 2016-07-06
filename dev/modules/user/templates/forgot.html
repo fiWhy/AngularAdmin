@@ -1,0 +1,54 @@
+<div id="login-page" class="row">
+    <div class="col s12 z-depth-4 card-panel">
+        <form name="reset" class="login-form" data-ng-submit="reset.$valid && user.reset()">
+            <div class="row">
+                <div class="input-field col s12 center">
+                    <h4>Forgot Password</h4>
+                    <p class="center">You can reset your password</p>
+                </div>
+            </div>
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class="mdi-social-person-outline prefix"></i>
+                    <input id="username" require data-ng-model="user.resetData.username" type="text">
+                    <label for="username" class="center-align">Username</label>
+                </div>
+            </div>
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class="mdi-action-lock-outline prefix"></i>
+                    <input id="email" data-ng-model="user.resetData.email" type="email">
+                    <label for="email">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <button type="submit" class="btn waves-effect waves-light col s12">Reset Password</button>
+                </div>
+                <div class="input-field col s12">
+                    <p class="margin sign-up">
+                        <a ui-sref="user.login">Login</a> 
+                    <!--<a href="page-register.html" class="right">Register</a>-->
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    html,
+    body {
+        height: 100%;
+    }
+    
+    html {
+        display: table;
+        margin: auto;
+    }
+    
+    body {
+        display: table-cell;
+        vertical-align: middle;
+    }
+</style>

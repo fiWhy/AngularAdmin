@@ -1,0 +1,24 @@
+﻿<div id="elf" data-ng-init="concole.log(this);" style="height:450px;">
+    <iframe id="elfinderbody" data-func-id="{{ $id }}" src="/admin/elfinder" style="overflow:hidden;height:100%;width:100%" height="100%" width="100%" frameborder="0"></iframe>
+</div>
+<style>
+    #elf iframe{
+        width: 100%;
+    }
+</style>
+<!--<script>
+    $('#elf').elfinder({
+        lang: 'ru',
+        url: '/elfinder/connector',
+        getfilecallback: function (files) {
+            handleelfinderfiles(files);
+        },
+    })
+        .elfinder('instance');
+</script>
+
+<style>
+    .elfinder-workzone {
+        clear: both;
+    }
+</style>-->

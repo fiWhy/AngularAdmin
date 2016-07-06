@@ -1,0 +1,21 @@
+﻿<div class="container">
+    <div class="text-center">
+        <ul data-ng-if="pagination.items.pages.length" class="pagination">
+            <li data-ng-class="{disabled:pagination.items.currentPage === 1}">
+                <a data-ng-click="pagination.handleChange(1)">First</a>
+            </li>
+            <li data-ng-class="{disabled:pagination.items.currentPage === 1}">
+                <a data-ng-click="pagination.handleChange(pagination.items.currentPage - 1)">Previous</a>
+            </li>
+            <li data-ng-repeat="page in pagination.items.pages" ng-class="{active:pagination.items.currentPage === page}">
+                <a data-ng-click="pagination.handleChange(page)">{{page}}</a>
+            </li>
+            <li data-ng-class="{disabled:pagination.items.currentPage === pagination.items.totalPages}">
+                <a data-ng-click="pagination.handleChange(pagination.items.currentPage + 1)">Next</a>
+            </li>
+            <li data-ng-class="{disabled:pagination.items.currentPage === pagination.items.totalPages}">
+                <a data-ng-click="pagination.handleChange(pagination.items.totalPages)">Last</a>
+            </li>
+        </ul>
+    </div>
+</div>
