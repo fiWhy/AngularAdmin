@@ -7,6 +7,7 @@ import {IBrandsService} from '../services/brands.service';
 import {ICategoriesService} from '../services/categories.service';
 import {ILanguagesService} from '../../../core/services/languages/languages.service';
 import {ILanguage} from '../../../core/services/languages/entities/languages.entity';
+import {Image, IImage} from '../entities/images.entity';
 
 export class ProductsCreateController extends CreateController<IProduct> {
     static $inject = ['ProductsService', 'ColorsService', 'SizesService', 'BrandsService', 'CategoriesService', 'LanguagesService', '$state', 'SweetAlertService'];
@@ -41,7 +42,9 @@ export class ProductsCreateController extends CreateController<IProduct> {
                 return this.getLanguages();
             })
             .then(() => {
-                this.item = new Product({});
+                this.item = new Product({
+                    images: []
+                });     
             });
 
     }
@@ -64,6 +67,26 @@ export class ProductsCreateController extends CreateController<IProduct> {
                 this.SweetAlertService.showAlert();
             });
     }
+
+
+    getPrimaryImage(file) {
+        this.item.primary_image = '/' + file.path;
+    }
+
+    getSecondaryImage(file) {
+        this.item.secondary_image = '/' + file.path;
+    }
+
+    getBackgroundImage(file) {
+        this.item.background_image = '/' + file.path;
+    }
+
+    getNewImages(file) {
+        this.item.images.push(new Image({
+            image: '/' + file.path
+        }));
+    }
+
 
     getLanguages() {
         return this.LanguagesService.getLanguages()

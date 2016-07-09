@@ -7,7 +7,6 @@ import './config/config';
 
 angular.module('app.core', [
     'ngCookies',
-    'ngMaterial',
     'ngAnimate',
     'ngResource',
     'ui.router',

@@ -8,16 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
 
-    <!-- Favicons-->
-    <link rel="icon" href="app/images/favicon/favicon-32x32.png" sizes="32x32">
-    <!-- Favicons-->
-    <link rel="apple-touch-icon-precomposed" href="resources/images/favicon/apple-touch-icon-152x152.png">
-    <!-- For iPhone -->
-    <meta name="msapplication-TileColor" content="#00bcd4">
-    <meta name="msapplication-TileImage" content="resources/images/favicon/mstile-144x144.png">
-    <!-- For Windows Phone -->
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAZnaZBXLqNBRXjd-82km_NO7GUItyKek"></script>
 
     <script src="node_modules/es6-shim/es6-shim.min.js"></script>
@@ -28,50 +18,65 @@
 
     <!-- bower:css -->
     <!-- endbower -->
-
     <!-- inject:css -->
     <!-- endinject -->
 
 
     <link href="./dev/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="./dev/lib/elfinder/css/elfinder.min.css" rel="stylesheet">  
-    <link href="./dev/lib/elfinder/css/theme.css" rel="stylesheet">  
+    <link href="./dev/lib/elfinder/css/elfinder.min.css" rel="stylesheet">
+    <link href="./dev/lib/elfinder/css/theme.css" rel="stylesheet">
 
     <!--[if lt IE 9]>
-<script src="../assets/js/ie8-responsive-file-warning.js"></script>
-<![endif]-->
-
+    <script src="../assets/js/ie8-responsive-file-warning.js"></script>
+    <![endif]-->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
-<body data-ng-controller="AppController as app">
-    <alert></alert>
-    <div data-ng-if="app.isAuthorized" data-ng-include="'./app/view/layout/header.html'"></div>
+<body data-ng-controller="AppController as app" class="nav-md">
+    <toast></toast>
     <!-- START MAIN -->
-    <div id="main">
-        <!-- START WRAPPER -->
-        <div class="wrapper">
-            <div data-ng-if="app.isAuthorized" data-ng-include="'./app/view/elements/sidebar.html'"></div>
-            <ui-view></ui-view>
-            <div data-ng-if="app.isAuthorized" data-ng-include="'./app/view/elements/rightsidebar.html'"></div>
-        </div>
+
+
+    <div data-ng-if="!app.isAuthorized" id="wrapper">
+        <ui-view></ui-view>
+        <style>
+            body {
+                background: #F7F7F7;
+            }
+        </style>
     </div>
 
-    <div data-ng-if="app.isAuthorized" data-ng-include="'./app/view/layout/footer.html'"></div>
+    <div data-ng-if="app.isAuthorized" class="container body">
+
+        <div class="main_container">
+            <!-- START WRAPPER -->
+            <div class="col-md-3 left_col" ng-include="'./app/view/elements/leftsidebar.html'"></div>
+            <div class="top_nav" ng-include="'./app/view/elements/navbar.html'"></div>
+            <div class="right_col" role="main">
+                <div class>
+                    <ui-view></ui-view>
+                </div>
+                <footer data-ng-include="'./app/view/layout/footer.html'"></footer>
+            </div>
+        </div>
+    </div>
 
 
 
     <!-- bower:js -->
     <!-- endbower -->
-
     <!-- inject:js -->
     <!-- endinject -->
 
+
+    <script type="text/javascript" src="./dev/lib/jquery.nicescroll/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="./dev/lib/jquery-leanmodal/jquery.leanModal.js"></script>
     <script type="text/javascript" src="./dev/lib/elfinder/js/elfinder.min.js"></script>
+    <script type="text/javascript" src="./dev/lib/jquery-scrollspy/jquery-scrollspy.js"></script>
     <script type="text/javascript" src="./dev/lib/elfinder/js/i18n/elfinder.ru.js"></script>
 
 

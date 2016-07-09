@@ -1,70 +1,78 @@
-﻿<section id="content">
-    <breadcrumps data-items="posts.breadcrumps"></breadcrumps>
-    <div class="container">
-        <div class="section">
-            <div id="table-datatables">
-                <h4 class="header">Посты</h4>
-                <div class="row">
-                    <div class="col s12 m12">
-                        <md-input-container class="md-blockcol col s12 m12">
-                            <label>
-                                Поиск:
-                            </label>
-                            <input class="col s12 m5" type="search" data-ng-model="posts.conditions.query">
-                            <md-button class="md-fab grey" data-ng-click="posts.search();">
-                                <md-icon class="deed-icon">search</md-icon>
+﻿<div class="page-title">
+    <div class="title_left">
+        <h3>
+            Все посты
+        </h3>
 
-                            </md-button>
-                            <md-button class="md-fab green"
-                                       aria-label="Содать"
-                                       data-ui-sref="posts.create" ">
-                                <md-icon>note_add</md-icon>
-                            </md-button>
-                        </md-input-container>
+        <div class="dataTables_length">
+            <breadcrumps data-items="posts.breadcrumps"></breadcrumps>
+        </div>
+    </div>
 
-                        <elfinder>Files</elfinder>
-                        <pagination total-items="posts.pagination.total"
-                                    current-page="posts.pagination.current_page"
-                                    page-size="15"
-                                    change-page="posts.changePage(page)"
-                                    data-ng-if="posts.pagination.total"></pagination>
+    <div class="title_right">
+        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+            <div class="input-group">
+                <input type="text" class="form-control"  data-ng-model="posts.conditions.query" placeholder="Поиск...">
+                <span class="input-group-btn">
+                    <button data-ng-click="posts.search();" class="btn btn-default" type="button"><span class="fa fa-search" aria-hidden="true"></span></button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
 
-                        <table table-widget
-                               id="data-table-simple"
-                               class="responsive-table display"
-                               cellspacing="0"
-                               data-title-translate="false"
-                               data-titles='[
+<div class="clearfix"></div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <button type="button" class="btn btn-success" data-ui-sref="posts.create">
+                <span class="fa fa-plus" aria-hidden="true"></span>
+            </button>
+            <pagination total-items="posts.pagination.total"
+                        current-page="posts.pagination.current_page"
+                        page-size="15"
+                        change-page="posts.changePage(page)"
+                        data-ng-if="posts.pagination.total"
+                        template="/view/elements/pagination.html"></pagination>
+
+            <table table-widget
+                   id="data-table-simple"
+                   class="responsive-table display jambo_table"
+                   cellspacing="0"
+                   data-title-translate="false"
+                   data-titles='[
                                         "Заголовок",
                                         "Содержание",
                                         "Главное изображение",
                                         "Средства"
                                       ]'>
-                            <tr data-ng-repeat="item in posts.list">
-                                <td data-ng-bind="item.fields.ru.title.value"></td>
-                                <td data-ng-bind="item.fields.ru.content.value"></td>
-                                <td class="col m3">
-                                    <img style="max-width:150px" data-ng-src="{{ item.image }}" />
-                                </td>
-                                <td>
-                                    <md-icon class="green-text deed-icon"
-                                             data-ui-sref="posts.update({id: item.id})">mode_edit</md-icon>
-                                    |
-                                    <md-icon class="red-text deed-icon"
-                                             data-ng-click="posts.removeItem($index);">delete_forever</md-icon>
-                                </td>
-                            </tr>
-                        </table>
-                        <pagination total-items="posts.pagination.total"
-                                    current-page="posts.pagination.current_page"
-                                    page-size="15"
-                                    change-page="posts.changePage(page)"
-                                    data-ng-if="posts.pagination.total"></pagination>
-                    </div>
-                </div>
-            </div>
+                <tr data-ng-repeat="item in posts.list">
+                    <td data-ng-bind="item.fields.ru.title.value"></td>
+                    <td data-ng-bind="item.fields.ru.content.value"></td>
+                    <td class="col m3">
+                        <img style="max-width:150px" data-ng-src="{{ item.image }}" />
+                    </td>
+                    <td>
+                        <button class="btn btn-danger"
+                                data-ng-click="posts.removeItem($index);">
+                            <span class="fa fa-remove"></span>
+                        </button>
+                        <button class="btn btn-success"
+                                data-ui-sref="posts.update({id: item.id})">
+                            <span class="fa fa-edit"></span>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+            <div class="clearfix"></div>
+            <pagination total-items="posts.pagination.total"
+                        current-page="posts.pagination.current_page"
+                        page-size="15"
+                        change-page="posts.changePage(page)"
+                        data-ng-if="posts.pagination.total"
+                        template="/view/elements/pagination.html"></pagination>
+
 
         </div>
     </div>
-
-</section>
+</div>

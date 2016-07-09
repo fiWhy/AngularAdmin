@@ -8,3 +8,5 @@ declare interface JQuery{
     sideNav(options);
     slider(options);
 }
+
+declare function Switchery(options?): void;

@@ -1,47 +1,25 @@
-﻿ <!-- START LEFT SIDEBAR NAV-->
-<aside id="left-sidebar-nav">
-    <ul id="slide-out" class="side-nav leftside-navigation">
-        <li class="user-details cyan darken-2">
-            <div class="row">
-                <div class="col col s4 m4 l4">
-                    <img data-ng-if="!app.getUser().avatar" data-ng-src="{{ '/images/avatars-material/avatars-material-man-1.png' | fromapp }}" alt="" class="circle responsive-img valign profile-image">
-                </div>
-                <div class="col col s8 m8 l8">
-                    <!--<ul id="profile-dropdown" class="dropdown-content">
-                        <li><a href="#"><i class="mdi-action-face-unlock"></i> Profile</a>
-                        </li>
-                        <li><a href="#"><i class="mdi-action-settings"></i> Settings</a>
-                        </li>
-                        <li><a href="#"><i class="mdi-communication-live-help"></i> Help</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="#"><i class="mdi-action-lock-outline"></i> Lock</a>
-                        </li>
-                        <li><a href="#"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
-                        </li>
-                    </ul>-->
-                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">
-                        {{ app.getUser().displayName }}
-                        <!--<i class="medium material-icons right">view_headline</i>-->
-                    </a>
-                    <p class="user-roal">{{ app.getUser().roles[0] }}</p>
-                </div>
-            </div>
-        </li>
-        <li class="bold">
-            <a data-ng-controller="UserController as user" href="javascript:void" data-ng-click="user.logout();">
-                <i class="medium material-icons">power_settings_new</i> Logout
+﻿<div class="clearfix"></div>
+<div class="menu_section">
+    <ul class="nav side-menu">
+        <li data-ng-repeat="item in menuDirective.menu"
+            data-ng-init="$last? menuDirective.prepareMenu(): angular.noop();">
+            <a>
+                <i class="fa fa-{{ item.icon }}"></i> {{ item.title }}
+                <span data-ng-if="item.children.length" class="fa fa-chevron-down"></span>
             </a>
-        </li>
-        <li class="bold" data-ng-repeat="item in menuDirective.menu">
-            <a ui-sref="{{ item.sref }}" class="waves-effect waves-cyan">
-                <i class="mdi-action-dashboard"></i>
-                <span data-ng-bind="item.title"></span>
-            </a>
+            <ul class="nav child_menu" data-ng-if="item.children.length">
+                <li data-ng-repeat="children in item.children">
+                    <a data-ui-sref="{{ children.sref }}"
+                       data-ng-bind="children.title"></a>
+                </li>
+            </ul>
         </li>
     </ul>
-    <a href="#" sidebar data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light cyan">
-        <i class="medium material-icons">view_headline</i>
-    </a>
-</aside>
-<!-- END LEFT SIDEBAR NAV-->
+</div>
+
+<script type="text/ng-template" id="withChild.html">
+        <li data-ng-repeat="children in item.children">
+            <a data-ui-sref="{{ children.sref }}"
+               data-ng-bind="children.title"></a>
+        </li>
+</script>

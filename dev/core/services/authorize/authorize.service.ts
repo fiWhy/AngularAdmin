@@ -3,7 +3,7 @@ import {AuthorizeResource} from './resources/authorize.resource';
 import {IAuthorizeEntity} from './entity/authorize.entity';
 import {IUserEntity} from '../../entity/user.entity';
 import {ITokenEntity} from './entity/token.entity';
-import {IToastAlertService} from '../alert/alerts/toast.alert.service';
+import {INgToastAlertService} from '../alert/alerts/ngtoast.alert.service';
 import {ISingleResponse} from "../../entity/r.entity";
 
 /**
@@ -24,12 +24,12 @@ export interface IAuthorizeService {
 
 class AuthorizeService
     implements IAuthorizeService {
-    static $inject: string[] = ['AuthorizeResource', '$cookies', 'config', 'ToastAlertService', '$q'];
+    static $inject: string[] = ['AuthorizeResource', '$cookies', 'config', 'NgToastAlertService', '$q'];
 
     constructor(private AuthorizeResource,
         private $cookies: ng.cookies.ICookiesService,
         private config,
-        private ToastAlertService: IToastAlertService,
+        private NgToastAlertService: INgToastAlertService,
         private $q: ng.IQService) {
 
     }
@@ -71,7 +71,7 @@ class AuthorizeService
                 return this.$q.reject();
             }
         }, (error) => {
-           this.ToastAlertService.showSimpleAlert(error.data.message);
+            this.NgToastAlertService.showAlert(error.data.message);
         });
         return user;
     }

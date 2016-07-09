@@ -45,7 +45,8 @@ export class PostsCreateController extends CreateController<IPost> {
         let post = {
             image: '',
             backgroundImage: '',
-            fields: {}
+            fields: {},
+            type_id: 1
         };
 
         this.item = new Post(post);

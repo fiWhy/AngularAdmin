@@ -11,6 +11,7 @@
 export interface IPost {
     id: number;
     slug: string;
+    type_id: number;
     bannerImage: string;
     image: string;
     fields: Array<IPostFields>
@@ -30,6 +31,7 @@ export class Post implements IPost {
     public slug: string;
     public bannerImage: string;
     public image: string;
+    public type_id: number;
     public fields: Array<IPostFields>;
 
     constructor(post) {
@@ -38,5 +40,6 @@ export class Post implements IPost {
         this.bannerImage = post ? post.bannerImage : null;
         this.image = post ? post.image : null;
         this.fields = post ? post.fields : null;
+        this.type_id = post ? post.type_id : null;
     }
 }

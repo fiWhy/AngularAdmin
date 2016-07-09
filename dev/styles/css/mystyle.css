@@ -1,36 +1,15 @@
-md-card .md-actions, md-card md-card-actions {
-    margin: 0px !important;
+.breadcrumbs {
+    list-style: none;
 }
 
-html, body {
-    background-color: transparent !important;
+.breadcrumbs li {
+    float: left;
 }
 
-.deed-icon {
-    cursor: pointer;
-}
-
-.ta-root button {
-    color:#fff;
-    padding: 0px 10px;
-    margin: 2px;
-}
-
-.ta-root .btn-group {
-    display:inline-block;
-    float:left;
-}
-
-.ta-toolbar {
-    overflow:hidden;
-}
-
-#cboxWrapper .cboxIframe{
-    width:100%;
-    height:100%;
+.breadcrumbs li:before {
+    content: '/';
 }
 
 .ngdialog.ngdialog-theme-default .ngdialog-content {
     width:80%;
-    overflow:hidden;
 }

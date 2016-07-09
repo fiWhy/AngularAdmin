@@ -1,0 +1,35 @@
+﻿<div data-ng-if="pagination.items.pages.length" 
+     class="dataTables_paginate paging_full_numbers" 
+     id="example_paginate">
+
+    <a tabindex="0" 
+       data-ng-if="pagination.items.currentPage != 1" 
+       class="first paginate_button paginate_button_disabled" 
+       id="example_first"
+       data-ng-click="pagination.handleChange(1)">Первая</a>
+
+    <a tabindex="0"
+       data-ng-if="pagination.items.currentPage != 1"  
+       class="previous paginate_button paginate_button_disabled" 
+       id="example_previous"
+       data-ng-click="pagination.handleChange(pagination.items.currentPage - 1)">Предыдущая</a>
+
+    <span>
+        <a data-ng-repeat="page in pagination.items.pages" 
+           tabindex="0"
+           data-ng-class="{paginate_active:pagination.items.currentPage === page}"
+           data-ng-click="pagination.handleChange(page)">{{page}}</a>
+    </span>
+
+    <a data-ng-if="pagination.items.currentPage != pagination.items.totalPages"
+       tabindex="0" 
+       class="next paginate_button" 
+       id="example_next"
+       data-ng-click="pagination.handleChange(pagination.items.currentPage + 1)">Следующая</a>
+
+    <a data-ng-if="pagination.items.currentPage != pagination.items.totalPages" 
+       tabindex="0" 
+       class="last paginate_button" 
+       data-ng-click="pagination.handleChange(pagination.items.totalPages)"
+       id="example_last">Последняя</a>
+</div>

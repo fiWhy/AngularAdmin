@@ -1,5 +1,5 @@
 import {IDashboardServiceImplementation} from '../services/dashboard.service';
-import {IMenuEntity} from '../../../core/directives/menu/entities/menu.entity';
+import {IMenuItemEntity} from '../../../core/directives/menu/entities/menu.item.entity';
 
 export interface IDashboardController {
 }

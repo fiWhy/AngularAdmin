@@ -1,151 +1,276 @@
-﻿ <!-- Form with placeholder -->
-<section id="content">
-    <breadcrumps data-items="productsUpdate.breadcrumps"></breadcrumps>
-    <div class="container">
-        <div class="section">
-            <form>
-                <div class="md-toolbar-tools">
-                    <h2 data-ng-bind="productsUpdate.item.fields.ru.title.value"></h2>
-                    <span flex></span><md-button class="md-fab green" data-ng-click="productsUpdate.update();">
-                        <md-icon class="deed-icon">check_circle</md-icon>
-                    </md-button>
-                </div>
-                <md-tabs md-dynamic-height md-border-bottom>
-                    <md-tab label="Основные настройки">
-                        <md-content class="md-padding">
-                            <md-input-container md-no-float class="md-block">
-                                <label>Ссылка</label>
-                                <input data-ng-model="productsUpdate.item.slug">
-                            </md-input-container>
-                            <md-input-container md-no-float class="md-block">
-                                <label>Цена</label>
-                                <input type="number" data-ng-model="productsUpdate.item.price">
-                            </md-input-container>
-                            <md-input-container md-no-float class="md-block">
-                                <label>Старая цена</label>
-                                <input type="number" data-ng-model="productsUpdate.item.old_price">
-                            </md-input-container>
-                            <md-input-container>
-                                <md-switch data-ng-model="productsUpdate.item.sale" 
-                                            ng-true-value="'1'" ng-false-value="'0'"
-                                           aria-label="Распродажа" class="md-warn">
+﻿<!-- Form with placeholder -->
+<div class="page-title">
+    <div class="title_left">
+        <h3>
+            Создание продукта
+        </h3>
+        <div class="dataTables_length">
+            <breadcrumps data-items="productsUpdate.breadcrumps"></breadcrumps>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <button type="button" data-ui-sref="posts.list" class="btn btn-primary">Назад</button>
+            <button type="button" data-ng-click="productsUpdate.update();" class="btn btn-success">Обновить</button>
+            <form class="form-horizontal form-label-left">
+                <uib-tabset active="activeForm">
+                    <uib-tab heading="Основные настройки">
+                        <div class="x_content">
+
+                            <!-- Link -->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Ссылка <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text"
+                                           id="first-name"
+                                           data-ng-model="productsUpdate.item.slug"
+                                           required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <!-- Price -->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Цена <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="number"
+                                           id="first-name"
+                                           data-ng-model="productsUpdate.item.price"
+                                           required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <!-- Old Price -->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Старая Цена
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="number"
+                                           id="first-name"
+                                           data-ng-model="productsUpdate.item.old_price"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <!-- Sale -->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
                                     Распродажа
-                                </md-switch>
-                                <md-switch data-ng-model="productsUpdate.item.in_stock"
-                                           ng-true-value="'1'" ng-false-value="'0'"
-                                           aria-label="В наличии" class="md-warn">
+                                </label>
+                                <div>
+                                    <input type="checkbox"
+                                           class="js-switch"
+                                           ui-switch
+                                           data-ng-model="productsUpdate.item.sale" />
+                                </div>
+                            </div>
+
+                            <!-- In stock -->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
                                     В наличии
-                                </md-switch>
-                                <md-switch data-ng-model="productsUpdate.item.active"
-                                           ng-true-value="'1'" ng-false-value="'0'"
-                                           aria-label="Активный" class="md-warn">
+                                </label>
+                                <div>
+                                    <input type="checkbox"
+                                           class="js-switch"
+                                           ui-switch
+                                           data-ng-model="productsUpdate.item.in_stock" />
+                                </div>
+                            </div>
+
+                            <!-- Active -->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
                                     Активный
-                                </md-switch>
-                            </md-input-container>
-                            <md-select ng-model="productsUpdate.item.colors.data" multiple>
-                                    <md-option ng-value="{id: color.id}" 
-                                               ng-repeat="color in productsUpdate.colors">
-                                        <div style="width:10px; height:10px; background-color:{{color.hex}}"></div>
-                                    </md-option>
-                            </md-select>
+                                </label>
+                                <div>
+                                    <input type="checkbox"
+                                           class="js-switch"
+                                           ui-switch
+                                           data-ng-model="productsUpdate.item.active" />
+                                </div>
+                            </div>
 
-                            <!-- Main images grid -->
-                            <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
-                                          md-row-height-gt-md="1:1" md-row-height="2:2"
-                                          md-gutter="12px" md-gutter-gt-sm="8px">
-                                <md-grid-tile class="gray"
-                                              md-rowspan="3" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1">
-                                    <elfinder data-model="productsUpdate.item.primary_image">
-                                        <img data-ng-src="{{  productsUpdate.item.primary_image }}" />
+                            <!-- Colors -->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Цвета
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <ui-select multiple
+                                               data-ng-model="productsUpdate.item.colors.data"
+                                               theme="bootstrap"
+                                               close-on-select="false"
+                                               title="Выберите цвет">
+                                        <ui-select-match placeholder="Выбрать цвет...">
+                                            <button style="background-color: {{ $item.hex }}; padding:15px;"></button>
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="color in productsUpdate.colors | filter:$select.search">
+                                            <button style="background-color: {{ color.hex }}; padding:15px;"></button>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+
+                            <!-- Sizes-->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Размеры
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <ui-select multiple
+                                               data-ng-model="productsUpdate.item.sizes.data"
+                                               theme="bootstrap"
+                                               close-on-select="false"
+                                               title="Выберите размер">
+                                        <ui-select-match placeholder="Выбрать размер..."> {{ $item.symbol }}</ui-select-match>
+                                        <ui-select-choices repeat="size in productsUpdate.sizes | filter:$select.search">
+                                            {{ size.symbol }}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+
+                            <!-- Primary image -->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Основное изображение <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <elfinder data-callback="productsUpdate.getPrimaryImage(file);">
+                                        <img data-ng-if="productsUpdate.item.primary_image" style="width:100%;" data-ng-src="{{ productsUpdate.item.primary_image }}" />
+                                        <span data-ng-if="!productsUpdate.item.primary_image" class="btn btn-default">Выбрать</span>
                                     </elfinder>
-                                    <md-grid-tile-footer>
-                                        <h3>Основное озображение</h3>
-                                    </md-grid-tile-footer>
-                                </md-grid-tile>
+                                </div>
+                            </div>
 
-                                <md-grid-tile class="gray"
-                                              md-rowspan="3" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1">
-                                    <elfinder data-model="productsUpdate.item.secondary_image">
-                                        <img data-ng-src="{{  productsUpdate.item.secondary_image }}" />
+                            <!-- Secondary image -->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Вторичное изображение <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <elfinder data-callback="productsUpdate.getSecondaryImage(file);">
+                                        <img data-ng-if="productsUpdate.item.secondary_image" style="width:100%;" data-ng-src="{{  productsUpdate.item.secondary_image }}" />
+                                        <span data-ng-if="!productsUpdate.item.secondary_image" class="btn btn-default">Выбрать</span>
                                     </elfinder>
-                                    <md-grid-tile-footer>
-                                        <h3>Вторичное изображение</h3>
-                                    </md-grid-tile-footer>
-                                </md-grid-tile>
+                                </div>
+                            </div>
 
-                                <md-grid-tile class="gray"
-                                              md-rowspan="3" md-colspan="4" md-colspan-sm="2" md-colspan-xs="1">
-                                    <elfinder data-model="productsUpdate.item.background_image">
-                                        <img data-ng-src="{{  productsUpdate.item.background_image }}" />
+                            <!-- Background image -->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Фон <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <elfinder data-callback="productsUpdate.getBackgroundImage(file);">
+                                        <img data-ng-if="productsUpdate.item.background_image" style="width:100%;" data-ng-src="{{  productsUpdate.item.background_image }}" />
+                                        <span data-ng-if="!productsUpdate.item.background_image" class="btn btn-default">Выбрать</span>
                                     </elfinder>
-                                    <md-grid-tile-footer>
-                                        <h3>Фон</h3>
-                                    </md-grid-tile-footer>
-                                </md-grid-tile>
-
-                            </md-grid-list>
-                            <!-- End -->
-                        </md-content>
-                    </md-tab>
-
-                    <!-- Other images -->
-                    <md-tab label="Изображения">
-                        <elfinder data-callback="productsUpdate.getNewImages(file)">
-                            <md-button class="md-fab green">
-                                <md-icon class="deed-icon">note_add</md-icon>
-                            </md-button>
-                        </elfinder>
-                        <div class='md-padding' layout="row" flex>
-                            <div layout="row" flex>
-                                <div class="parent"
-                                     layout="column"
-                                     data-ng-repeat="tile in productsUpdate.item.images.data">
-
-                                    <md-card>
-                                        <elfinder data-model="tile.image">
-                                            <image data-ng-src="{{ tile.image }}"></image>
-                                        </elfinder>
-                                        <md-card-content class="red" data-ng-click="productsUpdate.removeImage($index)">
-                                                Удалить
-                                        </md-card-content>
-                                    </md-card>
-
                                 </div>
                             </div>
                         </div>
-                    </md-tab>
-                    <!-- End -->
+                    </uib-tab>
 
 
-
-                    <md-tab data-ng-repeat="(key, language) in productsUpdate.item.fields" label="{{ key }}">
-                        <md-content class="md-padding">
+                    <uib-tab heading="Изображения">
+                        <div class="x_content">
+                            <elfinder data-callback="productsUpdate.getNewImages(file)">
+                                <span class="btn btn-success">
+                                    <span class="fa fa-plus"></span>
+                                    Добавить изображения
+                                </span>
+                            </elfinder>
                             <div class="row">
-                                <md-input-container class="col m6">
-                                    <label>Заголовок</label>
-                                    <input data-ng-model="language.title.value">
-                                </md-input-container>
-                                <md-input-container class="col m12">
-                                    <label>Текст</label>
-                                    <editor data-model="language.description.value"></editor>
-                                </md-input-container>
-                                <md-input-container class="col m6">
-                                    <label>Мета заголовок</label>
-                                    <input data-ng-model="language.meta_title.value">
-                                </md-input-container>
-                                <md-input-container class="col m12">
-                                    <label>Ключевые слова</label>
-                                    <textarea data-ng-model="language.meta_keywords.value"></textarea>
-                                </md-input-container>
-                                <md-input-container class="col m12">
-                                    <label>Описание</label>
-                                    <textarea data-ng-model="language.meta_description.value"></textarea>
-                                </md-input-container>
+                                <div class="col-xs-6 col-md-3"
+                                     data-ng-repeat="image in productsUpdate.item.images.data">
+                                    <a href="#" class="thumbnail">
+                                        <elfinder data-model="image.image">
+                                            <img data-ng-src="{{ image.image }}" alt="...">
+                                        </elfinder>
+                                    </a>
+                                    <span class="btn btn-danger"
+                                          data-ng-click="productsUpdate.removeImage($index)">
+                                        <i class="fa fa-remove"></i>
+                                    </span>
+                                </div>
                             </div>
-                        </md-content>
-                    </md-tab>
-                </md-tabs>
+                        </div>
+                    </uib-tab>
+
+                    <uib-tab data-ng-repeat="(key, language) in productsUpdate.item.fields"
+                             heading="{{ key }}">
+                        <div class="x_content">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Заголовок <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text"
+                                           required
+                                           data-ng-model="language.title.value"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Описание <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <editor required
+                                            data-model="language.description.value"></editor>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Мета заголовок
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text"
+                                           data-ng-model="language.meta_title.value"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Мета ключевые слова
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea data-ng-model="language.meta_keywords.value"
+                                              class="form-control col-md-7 col-xs-12"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Мета описание
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea data-ng-model="language.meta_description.value"
+                                              class="form-control col-md-7 col-xs-12"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </uib-tab>
+
+
+
+                </uib-tabset>
             </form>
         </div>
     </div>
-</section>
+</div>

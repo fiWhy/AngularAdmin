@@ -7,13 +7,16 @@ import './scripts/scripts';
 var app = angular.module('app', [
     'infinite-scroll',
     'ngCookies',
-    'ngMaterial',
+    'ngToast',
     'ngDialog',
     'ngAnimate',
     'ngResource',
     'ui.router',
+    'ui.bootstrap',
     'pascalprecht.translate',
     'textAngular',
+    'NgSwitchery',
+    'ui.select',
     
     'app.core',
     'app.modules',

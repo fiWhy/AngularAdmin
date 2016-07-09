@@ -19,7 +19,5 @@ export function userConfig($stateProvider, $translateProvider, config, MenuDirec
             controller: 'UserController as user',
             templateUrl: "./app/modules/user/templates/forgot.html"
         });
-        
-
-    MenuDirectiveServiceProvider.setMenuItem('Custom', 'view_headline', 'dashboard');
+       
 };

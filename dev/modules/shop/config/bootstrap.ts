@@ -5,7 +5,8 @@ export function bootstrap(
     MenuDirectiveServiceProvider: IMenuDirectiveServiceProviderInterface,
     $stateProvider: ng.ui.IStateProvider
 ) {
-    MenuDirectiveServiceProvider.setMenuItem('Продукты', '', 'products.list');
+    MenuDirectiveServiceProvider.setMenuItem('Магазин', 'shop', '', 'bug');
+    MenuDirectiveServiceProvider.setMenuItem('Продукты', null, 'products.list', '', 'shop');
     $stateProvider
         .state('products', {
             url: "/products",

@@ -9,7 +9,7 @@ import {Breadcrump} from '../../../core/entity/breadcrumps.entity';
 
 
 export class PostsController extends ListController<IPost> {
-    static $inject = ['PostsService', 'PostTypesService', 'SweetAlertService', '$mdDialog', '$scope', 'LanguagesService'];
+    static $inject = ['PostsService', 'PostTypesService', 'SweetAlertService', '$scope', 'LanguagesService'];
     private editAble: IPost;
     private postTypes: Array<IPostTypes>;
     private languages: Array<ILanguage>
@@ -19,7 +19,6 @@ export class PostsController extends ListController<IPost> {
         private PostsService: IPostsService,
         private PostTypesService: IPostTypesService,
         private SweetAlertService: ISweetAlertService,
-        private $mdDialog,
         private $scope,
         private LanguagesService: ILanguagesService
 

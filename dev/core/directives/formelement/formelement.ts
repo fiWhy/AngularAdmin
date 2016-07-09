@@ -1,9 +1,8 @@
 import {InputDirective} from './input/input.directive';
-import {SelectDirective} from './select/select.directive';
+import {ConvertToNumber} from './select/convert.to.number.directive';
 
 angular.module('app.core.directives.formelement', [])
     //# Input directive
     .directive('input', () => new InputDirective)
+    .directive('convertToNumber', () => new ConvertToNumber)
     
-    //# Select directive
-    .directive('select', () => new SelectDirective)

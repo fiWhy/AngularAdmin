@@ -1,19 +1,19 @@
 ﻿import {IMenuItemEntity} from '../entities/menu.item.entity';
-import {IMenuEntity} from '../entities/menu.entity';
 
 export interface IMenuDirectiveServiceImplementation {
+    items: Array<IMenuItemEntity>;
     setItems(items: Array<IMenuItemEntity>): void;
-    getItems(): IMenuEntity;
+    getItems(): Array<IMenuItemEntity>;
 }
 
 export class MenuDirectiveServiceImplementation
     implements IMenuDirectiveServiceImplementation {
-    public items: IMenuEntity;
+    public items: Array<IMenuItemEntity>;
     public setItems(items: Array<IMenuItemEntity>): void {
         this.items = items;
     }
 
-    public getItems(): IMenuEntity {
+    public getItems(): Array<IMenuItemEntity> {
         return this.items;
     }
 }

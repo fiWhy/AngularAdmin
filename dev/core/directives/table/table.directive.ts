@@ -9,4 +9,4 @@ angular.module('app.core.directives.table', [])
     .service('PaginationDirectiveService', PaginationDirectiveService)
     .directive('tableWidget', config => new Table(config))
     .directive('tableBodyWidget', config => new TableBody(config))
-    .directive('pagination', config => new Pagination(config));
+    .directive('pagination', (config, $templateRequest) => new Pagination(config, $templateRequest));

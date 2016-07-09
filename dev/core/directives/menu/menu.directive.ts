@@ -1,4 +1,4 @@
-import {IMenuEntity} from './entities/menu.entity';
+import {IMenuItemEntity} from './entities/menu.item.entity';
 import {MenuDirectiveController} from './controllers/menu.directive.controller';
 import {MenuDirectiveServiceProvider} from './provider/menu.directive.service.provider';
 import {MenuDirectiveServiceImplementation, IMenuDirectiveServiceImplementation} from './services/menu.directive.service';

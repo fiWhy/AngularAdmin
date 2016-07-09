@@ -1,9 +1,8 @@
 ﻿import {IMenuDirectiveServiceImplementation} from '../services/menu.directive.service';
-import {MenuEntity, IMenuEntity} from '../entities/menu.entity';
 import {MenuItemEntity, IMenuItemEntity} from '../entities/menu.item.entity';
 
 export interface IMenuDirectiveServiceProviderInterface {
-    setMenuItem(title: string, icon: string, sref: string);
+    setMenuItem(title: string, id?: any, sref?: string, icon?: string, parentId?: string): IMenuItemEntity;
 }
 
 export class MenuDirectiveServiceProvider
@@ -11,8 +10,30 @@ export class MenuDirectiveServiceProvider
 
     public items: Array<IMenuItemEntity> = [];
 
-    public setMenuItem(title: string, icon: string, sref: string) {
-        this.items.push(new MenuItemEntity(title, icon, sref));
+    public setMenuItem(title: string, id?: any, sref?: string, icon?: string, parentId?: string): IMenuItemEntity {
+        if (parentId) {
+            const parent = this.findParent(parentId);
+            if (!parent)
+                throw 'Sorry but there is no menu item parent with id ' + parentId;
+            parent.addChildren(new MenuItemEntity(title, id, sref, icon));
+        } else {
+            this.items.push(new MenuItemEntity(title, id, sref, icon));
+        }
+
+        return this.items[this.items.length - 1];
+
+    }
+
+    private findParent(id) {
+        let parent = null;
+        for (let i = 0; i < this.items.length; i++) {
+            if (this.items[i].id && this.items[i].id == id) {
+                parent = this.items[i];
+                break;
+            }
+        }
+
+        return parent;
     }
 
     public $get(MenuDirectiveServiceImplementation: IMenuDirectiveServiceImplementation): IMenuDirectiveServiceImplementation {

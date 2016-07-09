@@ -3,7 +3,8 @@
 postsBootstrap.$inject = ['MenuDirectiveServiceProvider', '$stateProvider'];
 
 export function postsBootstrap(MenuDirectiveServiceProvider: IMenuDirectiveServiceProviderInterface, $stateProvider) {
-    MenuDirectiveServiceProvider.setMenuItem('Посты', '', 'posts.list');
+    MenuDirectiveServiceProvider.setMenuItem('Посты', 'posts', '', 'bug');
+    MenuDirectiveServiceProvider.setMenuItem('Все', null, 'posts.list', '', 'posts');
     $stateProvider
         .state('posts', {
             url: "/posts",

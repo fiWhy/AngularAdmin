@@ -1,99 +1,106 @@
-<!-- START HEADER -->
-<header id="header" class="page-topbar">
-    <!-- start header nav-->
-    <div class="navbar-fixed">
-        <nav class="navbar-color">
-            <div class="nav-wrapper">
-                <ul class="left">
-                    <li>
-                        <h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1">
-                            <img data-ng-src="{{ '/images/materialize-logo.png' | fromapp }}" alt="materialize logo"></a>
-                         <span class="logo-text">Admin</span></h1></li>
-                </ul>
-                <div class="header-search-wrapper hide-on-med-and-down">
-                    <i class="medium material-icons">search</i>
-                    <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="{{ 'GLOBAL.SEARCHPAN_PLACEHOLDER' | translate }}" />
-                </div>
-
-                <ul type="notification" class="right hide-on-med-and-down">
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button" data-activates="translation-dropdown"><img data-ng-src="{{ '/images/flag-icons/United-States.png'| fromapp }}" alt="USA" /></a>
-                    </li>
-                    <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen">
-                        <i class="medium material-icons">aspect_ratio</i>
-                        </a>
-                    </li>
-                    <li>
-                        <a dropdown type="notification" href="javascript:void(0);" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown">
-                            <i class="medium material-icons">email
-                                <small class="notification-badge">5</small>
-                            </i>
-
-                        </a>
-                    </li>
-                    <li><a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse">
-                        <i class="medium material-icons">chat_bubble_outline</i>
-                        </a>
-                    </li>
-                </ul>
-                <!-- translation-button -->
-                <ul id="translation-dropdown" class="dropdown-content">
-                    <li>
-                        <a href="#!"><img data-ng-src="{{ '/images/flag-icons/United-States.png'|fromapp }}" alt="English" /> <span class="language-select">English</span></a>
-                    </li>
-                    <li>
-                        <a href="#!"><img data-ng-src="{{ '/images/flag-icons/France.png'| fromapp }}" alt="French" /> <span class="language-select">French</span></a>
-                    </li>
-                    <li>
-                        <a href="#!"><img data-ng-src="{{ '/images/flag-icons/China.png'| fromapp }}" alt="Chinese" /> <span class="language-select">Chinese</span></a>
-                    </li>
-                    <li>
-                        <a href="#!"><img data-ng-src="{{ '/images/flag-icons/Germany.png'| fromapp }}" alt="German" /> <span class="language-select">German</span></a>
-                    </li>
-
-                </ul>
-
-                <!-- notifications-dropdown -->
-                <ul id="notifications-dropdown" class="dropdown-content">
-                    <li>
-                        <h5>NOTIFICATIONS <span class="new badge">5</span></h5>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#!"><i class="mdi-action-add-shopping-cart"></i> A new order has been placed!</a>
-                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">2 hours ago</time>
-                    </li>
-                    <li>
-                        <a href="#!"><i class="mdi-action-stars"></i> Completed the task</a>
-                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">3 days ago</time>
-                    </li>
-                    <li>
-                        <a href="#!"><i class="mdi-action-settings"></i> Settings updated</a>
-                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">4 days ago</time>
-                    </li>
-                    <li>
-                        <a href="#!"><i class="mdi-editor-insert-invitation"></i> Director meeting started</a>
-                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">6 days ago</time>
-                    </li>
-                    <li>
-                        <a href="#!"><i class="mdi-action-trending-up"></i> Generate monthly report</a>
-                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">1 week ago</time>
-                    </li>
-                </ul>
+<!-- top navigation -->
+    <div class="nav_menu">
+        <nav class="" role="navigation">
+            <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
             </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <img src="images/img.jpg" alt="">John Doe
+                        <span class=" fa fa-angle-down"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
+                        <li>
+                            <a href="javascript:;">  Profile</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="badge bg-red pull-right">50%</span>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Help</a>
+                        </li>
+                        <li>
+                            <a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+                <li role="presentation" class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="badge bg-green">6</span>
+                    </a>
+                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list animated fadeInDown" role="menu">
+                        <li>
+                            <a>
+                                <span class="image">
+                                    <img src="images/img.jpg" alt="Profile Image" />
+                                </span>
+                                <span>
+                                    <span>John Smith</span>
+                                    <span class="time">3 mins ago</span>
+                                </span>
+                                <span class="message">
+                                    Film festivals used to be do-or-die moments for movie makers. They were where...
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="image">
+                                    <img src="images/img.jpg" alt="Profile Image" />
+                                </span>
+                                <span>
+                                    <span>John Smith</span>
+                                    <span class="time">3 mins ago</span>
+                                </span>
+                                <span class="message">
+                                    Film festivals used to be do-or-die moments for movie makers. They were where...
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="image">
+                                    <img src="images/img.jpg" alt="Profile Image" />
+                                </span>
+                                <span>
+                                    <span>John Smith</span>
+                                    <span class="time">3 mins ago</span>
+                                </span>
+                                <span class="message">
+                                    Film festivals used to be do-or-die moments for movie makers. They were where...
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <span class="image">
+                                    <img src="images/img.jpg" alt="Profile Image" />
+                                </span>
+                                <span>
+                                    <span>John Smith</span>
+                                    <span class="time">3 mins ago</span>
+                                </span>
+                                <span class="message">
+                                    Film festivals used to be do-or-die moments for movie makers. They were where...
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="text-center">
+                                <a>
+                                    <strong><a href="inbox.html">See All Alerts</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </nav>
     </div>
-    <!-- end header nav-->
-</header>
-<!-- END HEADER -->
-
-<script>
-    // Search class for focus
-  $('.header-search-input').focus(
-  function(){
-      $(this).parent('div').addClass('header-search-wrapper-focus');
-  }).blur(
-  function(){
-      $(this).parent('div').removeClass('header-search-wrapper-focus');
-  });
-</script>
+<!-- /top navigation -->

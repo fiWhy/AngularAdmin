@@ -1,5 +1,5 @@
 import {IUserServiceImplementation} from '../services/user.service';
-import {IToastAlertService} from '../../../core/services/alert/alerts/toast.alert.service';
+import {INgToastAlertService} from '../../../core/services/alert/alerts/ngtoast.alert.service';
 import {ISweetAlertService} from '../../../core/services/alert/alerts/sweet.alert.service';
 
 interface IUserController {
@@ -9,13 +9,14 @@ interface IUserController {
 
 export class UserController
     implements IUserController {
-    static $inject = ['UserService', 'ToastAlertService', 'SweetAlertService', '$state'];
+    static $inject = ['UserService', 'NgToastAlertService', 'SweetAlertService', '$state'];
     loginData: {};
     resetData: {};
     constructor(private UserService: IUserServiceImplementation,
-        private ToastAlertService: IToastAlertService,
+        private NgToastAlertService: INgToastAlertService,
         private SweetAlertService: ISweetAlertService,
         private $state: ng.ui.IStateService) {
+        
     }
 
     login() {
