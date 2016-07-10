@@ -8,10 +8,4 @@ import './slider/slider.init';
 
 import {modules} from './modules.list.config'
 
-angular.module('app.modules', [
-    'ngCookies',
-    'ngAnimate',
-    'ngResource',
-    'ui.router',
-    'pascalprecht.translate'
-].concat(modules()));
+angular.module('app.modules', [].concat(modules()));

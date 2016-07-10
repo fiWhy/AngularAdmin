@@ -3,5 +3,7 @@
 }
 
 export class Slide {
-
+    constructor(slide?) {
+        
+    }
 }

@@ -1,1 +1,67 @@
-﻿
+﻿<div class="page-title">
+    <div class="title_left">
+        <h3>
+            Все слайды
+        </h3>
+
+        <div class="dataTables_length">
+            <breadcrumps data-items="slider.breadcrumps"></breadcrumps>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <button type="button" class="btn btn-success" data-ui-sref="slider.create">
+                <span class="fa fa-plus" aria-hidden="true"></span>
+            </button>
+            <pagination total-items="slider.pagination.total"
+                        current-page="slider.pagination.current_page"
+                        page-size="15"
+                        change-page="slider.changePage(page)"
+                        data-ng-if="slider.pagination.total"
+                        template="/view/elements/pagination.html"></pagination>
+
+            <table table-widget
+                   id="data-table-simple"
+                   class="responsive-table display jambo_table"
+                   cellspacing="0"
+                   data-title-translate="false"
+                   data-titles='[
+                                        "Заголовок",
+                                        "Содержание",
+                                        "Изображение",
+                                        "Средства"
+                                      ]'>
+                <tr data-ng-repeat="item in slider.list">
+                    <td data-ng-bind="item.fields.ru.title.value"></td>
+                    <td data-ng-bind="item.fields.ru.text.value"></td>
+                    <td class="col m3">
+                        <img style="max-width:150px" data-ng-src="{{ item.image }}" />
+                    </td>
+                    <td>
+                        <button class="btn btn-danger"
+                                data-ng-click="slider.removeItem($index);">
+                            <span class="fa fa-remove"></span>
+                        </button>
+                        <button class="btn btn-success"
+                                data-ui-sref="slider.update({id: item.id})">
+                            <span class="fa fa-edit"></span>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+            <div class="clearfix"></div>
+            <pagination total-items="slider.pagination.total"
+                        current-page="slider.pagination.current_page"
+                        page-size="15"
+                        change-page="slider.changePage(page)"
+                        data-ng-if="slider.pagination.total"
+                        template="/view/elements/pagination.html"></pagination>
+
+
+        </div>
+    </div>
+</div>

@@ -19,6 +19,9 @@ export function ConfigConstant() {
             color: apiUrl + 'color/:id',
             category: apiUrl + 'category/:id',
 
+
+            slide: apiUrl + 'slide/:id',
+
             // authorize: 'google.com.ua'
         },
         language: 'en',

@@ -9,7 +9,7 @@ export class BrandsController extends ListController<IBrand>
     private item: IBrand;
     constructor(
         public service,
-        private SweetAlertService
+        public alertService
     ) {
         super();
         this.setBreadcrumps();
@@ -32,11 +32,11 @@ export class BrandsController extends ListController<IBrand>
     private create() {
         this.service.create(this.item)
             .then(res => {
-                this.SweetAlertService.setOptions({
+                this.alertService.setOptions({
                     title: 'Создано!',
                     text: 'Запись успешно создана'
                 });
-                this.SweetAlertService.showAlert();
+                this.alertService.showAlert();
                 this.list.push(new Brand(res.data));
             });
     }
@@ -44,37 +44,5 @@ export class BrandsController extends ListController<IBrand>
     private getImage(file) {
         this.item.image = '/' + file.path;
     }
-
-    private update(index) {
-        this.service.update(this.list[index].id, this.list[index])
-            .then(res => {
-                this.SweetAlertService.setOptions({
-                    title: 'Обновлено!',
-                    text: 'Запись успешно обновлена'
-                });
-                this.SweetAlertService.showAlert();
-            });
-    }
-
-    private removeItem(index: number) {
-        this.SweetAlertService.setOptions({
-            title: 'Вы уверены?',
-            text: 'Вы не сможете восстановить эту запись!',
-            type: "warning",
-            showCancelButton: true,
-        })
-        this.SweetAlertService.showAlert((res) => {
-            if (res) {
-                this.service.delete(this.list[index].id)
-                    .then((res) => {
-                        this.list.splice(index, 1);
-                        this.SweetAlertService.setOptions({
-                            title: 'Удалено!',
-                            text: 'Запись успешно удалена'
-                        });
-                        this.SweetAlertService.showAlert();
-                    });
-            }
-        });
-    }
+    
 }

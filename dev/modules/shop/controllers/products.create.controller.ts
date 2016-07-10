@@ -64,7 +64,7 @@ export class ProductsCreateController extends CreateController<IProduct> {
             .then((res) => {
                 this.SweetAlertService.setOptions({
                     title: 'Создано!',
-                    text: 'Продукт успешно создана'
+                    text: 'Продукт успешно создан'
                 });
                 this.SweetAlertService.showAlert();
             }, (err) => {

@@ -15,18 +15,18 @@ export function bootstrap(
             template: '<ui-view/>'
         }).state('slider.list', {
             url: "/list",
-            controller: 'sliderController',
-            controllerAs: 'products',
+            controller: 'SliderController',
+            controllerAs: 'slider',
             templateUrl: "./app/modules/slider/templates/list.html"
         }).state('slider.create', {
             url: "/create",
-            controller: 'sliderCreateController',
-            controllerAs: 'productsCreate',
+            controller: 'SliderCreateController',
+            controllerAs: 'sliderCreate',
             templateUrl: "./app/modules/slider/templates/add.html"
         }).state('slider.update', {
             url: "/:id",
-            controller: 'sliderUpdateController',
-            controllerAs: 'productsUpdate',
+            controller: 'SliderUpdateController',
+            controllerAs: 'sliderUpdate',
             templateUrl: "./app/modules/slider/templates/edit.html"
         });
 };

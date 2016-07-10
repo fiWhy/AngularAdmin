@@ -1,1 +1,206 @@
-﻿
+﻿<!-- Form with placeholder -->
+<div class="page-title">
+    <div class="title_left">
+        <h3>
+            Создание слайда
+        </h3>
+        <div class="dataTables_length">
+            <breadcrumps data-items="sliderUpdate.breadcrumps"></breadcrumps>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <button type="button" data-ui-sref="slider.list" class="btn btn-primary">Назад</button>
+            <button type="button" data-ng-click="sliderUpdate.update();" class="btn btn-success">Обновить</button>
+            <form name="productsForm" class="form-horizontal form-label-left">
+                <uib-tabset active="activeForm">
+                    <uib-tab heading="Основные настройки">
+                        <div class="x_content">
+
+                            <!-- Link -->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Ссылка <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text"
+                                           id="first-name"
+                                           data-ng-model="sliderUpdate.item.link"
+                                           required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <!-- Active -->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Активный
+                                </label>
+                                <div>
+                                    <input type="checkbox"
+                                           class="js-switch"
+                                           ui-switch
+                                           data-ng-model="sliderUpdate.item.active" />
+                                </div>
+                            </div>
+
+                            <!--  image -->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Основное изображение <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <elfinder data-model="sliderUpdate.item.image">
+                                        <img data-ng-if="sliderUpdate.item.image" style="width:100%;" data-ng-src="{{ sliderUpdate.item.image }}" />
+                                        <span data-ng-if="!sliderUpdate.item.image" class="btn btn-default">Выбрать</span>
+                                    </elfinder>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </uib-tab>
+
+
+                    <uib-tab heading="Настройки по умолчанию">
+                        <div class="x_content">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Цвет кнопки ссылки  <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                    <span class="btn"
+                                          style="background-color: {{ sliderUpdate.item.fields.default.link_button_color.value }};
+                                                    padding:15px;"></span>
+                                    <input class="form-control"
+                                           data-ng-model="sliderUpdate.item.fields.default.link_button_color.value"
+                                           colorpicker />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Цвет ссылки  <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <span class="btn"
+                                          style="background-color: {{ sliderUpdate.item.fields.default.link_color.value }};
+                                                    padding:15px;"></span>
+                                    <input class="form-control"
+                                           data-ng-model="sliderUpdate.item.fields.default.link_color.value"
+                                           colorpicker />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Цвет текста  <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                    <span class="btn"
+                                          style="background-color: {{ sliderUpdate.item.fields.default.text_color.value }};
+                                                    padding:15px;"></span>
+                                    <input class="form-control"
+                                           data-ng-model="sliderUpdate.item.fields.default.text_color.value"
+                                           colorpicker />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Цвет заднего фона заголовка  <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <span class="btn"
+                                          style="background-color: {{ sliderUpdate.item.fields.default.title_background_color.value }};
+                                                    padding:15px;"></span>
+                                    <input class="form-control"
+                                           data-ng-model="sliderUpdate.item.fields.default.title_background_color.value"
+                                           colorpicker />
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Цвет заголовка  <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <span class="btn"
+                                          style="background-color: {{ sliderUpdate.item.fields.default.title_color.value }};
+                                                    padding:15px;"></span>
+                                    <input class="form-control"
+                                           data-ng-model="sliderUpdate.item.fields.default.title_color.value"
+                                           colorpicker />
+                                </div>
+                            </div>
+                        </div>
+                    </uib-tab>
+
+                    <uib-tab data-ng-repeat="(key, language) in sliderUpdate.item.fields"
+                             heading="{{ key }}"
+                             data-ng-if="key !== 'default'">
+                        <div class="x_content">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Текст ссылки <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text"
+                                           required
+                                           data-ng-model="language.link_text.value"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Заголовок ссылки <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text"
+                                           required
+                                           data-ng-model="language.link_title.value"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Заголовок <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text"
+                                           required
+                                           data-ng-model="language.title.value"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Текст <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea required
+                                              data-model="language.text.value"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </uib-tab>
+
+
+
+                </uib-tabset>
+            </form>
+        </div>
+    </div>
+</div>

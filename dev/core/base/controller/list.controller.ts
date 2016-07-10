@@ -7,6 +7,7 @@ export interface IListController<T> {
     loadMore: boolean;
     pagination: IPagination;
     conditions;
+    alertService;
 }
 export class ListController<T> implements IListController<T> {
     public breadcrumps;
@@ -15,6 +16,7 @@ export class ListController<T> implements IListController<T> {
     public loadMore = false;
     public pagination;
     public conditions;
+    public alertService;
     constructor() {
         this.conditions = {
         }
@@ -43,6 +45,39 @@ export class ListController<T> implements IListController<T> {
     search() {
         this.conditions.page = 1;
         this.load(true);
+    }
+
+    private update(index) {
+        this.service.update(this.list[index].id, this.list[index])
+            .then(res => {
+                this.alertService.setOptions({
+                    title: 'Обновлено!',
+                    text: 'Запись успешно обновлена'
+                });
+                this.alertService.showAlert();
+            });
+    }
+
+    private removeItem(index: number) {
+        this.alertService.setOptions({
+            title: 'Вы уверены?',
+            text: 'Вы не сможете восстановить эту запись!',
+            type: "warning",
+            showCancelButton: true,
+        })
+        this.alertService.showAlert((res) => {
+            if (res) {
+                this.service.delete(this.list[index].id)
+                    .then((res) => {
+                        this.list.splice(index, 1);
+                        this.alertService.setOptions({
+                            title: 'Удалено!',
+                            text: 'Запись успешно удалена'
+                        });
+                        this.alertService.showAlert();
+                    });
+            }
+        });
     }
     
 }
