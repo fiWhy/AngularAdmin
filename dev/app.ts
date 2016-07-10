@@ -17,7 +17,8 @@ var app = angular.module('app', [
     'textAngular',
     'NgSwitchery',
     'ui.select',
-    
+    'colorpicker.module',
+
     'app.core',
     'app.modules',
 ]);

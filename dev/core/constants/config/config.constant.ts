@@ -11,13 +11,13 @@ export function ConfigConstant() {
             cars: apiUrl + 'cars/:id',
             posts: apiUrl + 'posts/:id',
             postTypes: apiUrl + 'post_types/:id',
-            shop: apiUrl + 'shop/:id?include=colors,sizes,images,brand',
+            shop: apiUrl + 'shop/:id',
             menu: apiUrl + 'menu/:id?include=children',
 
-            size: apiUrl + 'size',
-            brand: apiUrl + 'brand',
-            color: apiUrl + 'color',
-            category: apiUrl + 'category',
+            size: apiUrl + 'size/:id',
+            brand: apiUrl + 'brand/:id',
+            color: apiUrl + 'color/:id',
+            category: apiUrl + 'category/:id',
 
             // authorize: 'google.com.ua'
         },

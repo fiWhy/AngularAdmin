@@ -12,6 +12,10 @@ export class ProductsController extends ListController<IProduct>
     ) {
         super();
         this.setBreadcrumps();
+        this.conditions = {
+            "include": "colors,sizes,images,brand"
+        };
+
         this.load(true);
     }
 
@@ -31,7 +35,6 @@ export class ProductsController extends ListController<IProduct>
         })
         this.SweetAlertService.showAlert((res) => {
             if (res) {
-
                 this.service.delete(this.list[index].id)
                     .then((res) => {
                         this.changePage(this.pagination.current_page, true);

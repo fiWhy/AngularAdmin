@@ -1,7 +1,7 @@
 ﻿export interface IBaseService<T> {
     repository;
     getList(conditions?: any);
-    get(id: number);
+    get(id: number, conditions?);
     update(id: number, data: T);
     create(data: T);
     delete(id: number);
@@ -16,8 +16,8 @@ export class BaseService<T> implements IBaseService<T> {
             })
     }
 
-    get(id) {
-        return this.repository.get({ id: id }).$promise
+    get(id, conditions = {}) {
+        return this.repository.get(angular.merge(conditions, { id: id })).$promise
             .then((res) => res);
     }
 

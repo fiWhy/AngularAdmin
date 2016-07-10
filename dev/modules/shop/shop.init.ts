@@ -2,6 +2,9 @@
 import {ProductsUpdateController} from './controllers/products.update.controller';
 import {ProductsCreateController} from './controllers/products.create.controller';
 
+import {ColorsController} from './controllers/colors.controller';
+import {BrandsController} from './controllers/brands.controller';
+
 //# Services
 import {ProductsService} from './services/products.service';
 import {ColorsService} from './services/colors.service';
@@ -41,4 +44,6 @@ angular.module('app.modules.shop', [])
     .controller('ProductsController', ProductsController)
     .controller('ProductsUpdateController', ProductsUpdateController)
     .controller('ProductsCreateController', ProductsCreateController)
+    .controller('ColorsController', ColorsController)
+    .controller('BrandsController', BrandsController)
     .config(bootstrap);

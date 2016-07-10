@@ -16,7 +16,7 @@
         <div class="x_panel">
             <button type="button" data-ui-sref="posts.list" class="btn btn-primary">Назад</button>
             <button type="button" data-ng-click="productsCreate.create();" class="btn btn-success">Создать</button>
-            <form class="form-horizontal form-label-left">
+            <form name="productsForm" class="form-horizontal form-label-left">
                 <uib-tabset active="activeForm">
                     <uib-tab heading="Основные настройки">
                         <div class="x_content">
@@ -98,6 +98,42 @@
                                            class="js-switch"
                                            ui-switch
                                            data-ng-model="productsCreate.item.active" />
+                                </div>
+                            </div>
+
+                            <!-- Category -->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Категория
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <ui-select data-ng-model="productsCreate.item.category_id"
+                                               theme="bootstrap"
+                                               close-on-select="true"
+                                               title="Выберите категорию">
+                                        <ui-select-match placeholder="Выбрать цвет...">{{ $select.selected.fields.ru.name.value }}</ui-select-match>
+                                        <ui-select-choices repeat="category.id as category in productsCreate.categories | filter:$select.search">
+                                            {{ category.fields.ru.name.value }}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+
+                            <!-- Brand -->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Бренд
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <ui-select data-ng-model="productsCreate.item.brand_id"
+                                               theme="bootstrap"
+                                               close-on-select="true"
+                                               title="Выберите бренд">
+                                        <ui-select-match placeholder="Выбрать цвет...">{{ $select.selected.title }}</ui-select-match>
+                                        <ui-select-choices repeat="brand.id as brand in productsCreate.brands | filter:$select.search">
+                                            {{ brand.title }}
+                                        </ui-select-choices>
+                                    </ui-select>
                                 </div>
                             </div>
 

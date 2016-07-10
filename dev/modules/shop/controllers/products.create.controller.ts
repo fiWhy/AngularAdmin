@@ -43,8 +43,10 @@ export class ProductsCreateController extends CreateController<IProduct> {
             })
             .then(() => {
                 this.item = new Product({
-                    images: []
-                });     
+                    images: [],
+                    brand_id: 1,
+                    category_id: this.categories[0].id
+                });
             });
 
     }
@@ -59,10 +61,17 @@ export class ProductsCreateController extends CreateController<IProduct> {
 
     create() {
         super.create()
-            .then(() => {
+            .then((res) => {
                 this.SweetAlertService.setOptions({
                     title: 'Создано!',
-                    text: 'Продукт успешно обновлен'
+                    text: 'Продукт успешно создана'
+                });
+                this.SweetAlertService.showAlert();
+            }, (err) => {
+                this.SweetAlertService.setOptions({
+                    type: 'error',
+                    title: 'Ошибка!',
+                    text: 'Проверьте или все обязательные поля заполнены'
                 });
                 this.SweetAlertService.showAlert();
             });
@@ -117,7 +126,9 @@ export class ProductsCreateController extends CreateController<IProduct> {
     }
 
     getCategories() {
-        return this.CategoriesService.getList()
+        return this.CategoriesService.getList({
+            'withoutParents': true
+        })
             .then((response) => {
                 this.categories = response.data;
             });

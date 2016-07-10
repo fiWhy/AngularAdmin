@@ -17,7 +17,7 @@ export class Brand {
     public image;
     public active;
 
-    constructor(brand?: IBrand) {
+    constructor(brand) {
         this.id = brand.id ? brand.id : null;
         this.title = brand.title ? brand.title : null;
         this.slug = brand.slug ? brand.slug : null;

@@ -13,7 +13,7 @@ export class Color {
     public slug;
     public hex;
 
-    constructor(color?: IColor) {
+    constructor(color?) {
         this.id = color.id ? color.id : null;
         this.slug = color.slug ? color.slug : null;
         this.hex = color.hex ? color.hex : null;

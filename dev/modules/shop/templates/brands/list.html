@@ -1,0 +1,96 @@
+﻿<div class="page-title">
+    <div class="title_left">
+        <h3>
+            Все цвета
+        </h3>
+
+        <div class="dataTables_length">
+            <breadcrumps data-items="brands.breadcrumps"></breadcrumps>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="form-group">
+                <label class="control-label col-md-1 col-sm-1 col-xs-12">
+                    <button type="button" class="btn btn-success" style="background-color: {{ brands.item.hex }}" data-ng-click="brands.create();">
+                        <span class="fa fa-plus" aria-hidden="true"></span>
+                    </button>
+                </label>
+
+                <div class="col-md-3 col-sm-5 col-xs-12">
+                    <input type="text"
+                           data-ng-model="brands.item.title"
+                           required="required"
+                           placeholder="Название"
+                           class="form-control col-md-7 col-xs-12">
+                </div>
+
+
+                <div class="col-md-3 col-sm-5 col-xs-12">
+                    <label>
+                        Активность
+                    </label>
+                    <input type="checkbox"
+                           ui-switch
+                           data-ng-model="brands.item.active" />
+                </div>
+
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <elfinder data-callback="brands.getImage(file);">
+                        <img data-ng-if="brands.item.image" style="width:100%;" data-ng-src="{{ brands.item.image }}" />
+                        <span data-ng-if="!brands.item.image" class="btn btn-default">Выбрать изображение</span>
+                    </elfinder>
+                </div>
+            </div>
+            <table table-widget
+                   id="data-table-simple"
+                   class="responsive-table display jambo_table"
+                   cellspacing="0"
+                   data-title-translate="false"
+                   data-titles='[
+                                        "ID",
+                                        "Название",
+                                        "Изображение",
+                                        "Активность",
+                                        "Средства"
+                                      ]'>
+                <tr data-ng-repeat="item in brands.list">
+                    <td data-ng-bind="item.id"></td>
+                    <td>
+                        <input type="text"
+                               data-ng-model="item.title"
+                               class="form-control" />
+                    </td>
+                    <td>
+                        <elfinder data-model="item.image">
+                            <img data-ng-if="item.image" style="width:100%;" data-ng-src="{{ item.image }}" />
+                            <span data-ng-if="!item.image" class="btn btn-default">Выбрать изображение</span>
+                        </elfinder>
+                    </td>
+                    <td>
+                        <input type="checkbox"
+                               ui-switch
+                               data-ng-model="item.active" />
+                    </td>
+                    <td>
+                        <button class="btn btn-danger"
+                                data-ng-click="brands.removeItem($index);">
+                            <span class="fa fa-remove"></span>
+                        </button>
+                        <button class="btn btn-success"
+                                data-ng-click="brands.update($index)">
+                            <span class="fa fa-edit"></span>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+            <div class="clearfix"></div>
+
+
+        </div>
+    </div>
+</div>

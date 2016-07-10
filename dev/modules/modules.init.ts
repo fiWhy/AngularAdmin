@@ -4,6 +4,7 @@ import './user/user.init';
 import './carrental/carrental.init';
 import './posts/posts.init';
 import './shop/shop.init';
+import './slider/slider.init';
 
 import {modules} from './modules.list.config'
 

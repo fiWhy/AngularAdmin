@@ -1,0 +1,71 @@
+﻿<div class="page-title">
+    <div class="title_left">
+        <h3>
+            Все цвета
+        </h3>
+
+        <div class="dataTables_length">
+            <breadcrumps data-items="colors.breadcrumps"></breadcrumps>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="form-group">
+                <label class="control-label col-md-1 col-sm-1 col-xs-12">
+                    <button type="button" class="btn btn-success" style="background-color: {{ colors.item.hex }}" data-ng-click="colors.create();">
+                        <span class="fa fa-plus" aria-hidden="true"></span>
+                    </button>
+                </label>
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text"
+                           id="first-name"
+                           data-ng-model="colors.item.hex"
+                           required="required"
+                           placeholder="HEX"
+                           colorpicker
+                           class="form-control col-md-7 col-xs-12">
+                </div>
+            </div>
+            <table table-widget
+                   id="data-table-simple"
+                   class="responsive-table display jambo_table"
+                   cellspacing="0"
+                   data-title-translate="false"
+                   data-titles='[
+                                        "ID",
+                                        "HEX",
+                                        "Представление",
+                                        "Средства"
+                                      ]'>
+                <tr data-ng-repeat="item in colors.list">
+                    <td data-ng-bind="item.id"></td>
+                    <td data-ng-bind="item.hex"></td>
+                    <td class="col m3">
+                        <button class="btn"
+                                colorpicker
+                                data-ng-model="item.hex"
+                                style="background-color: {{ item.hex }}; padding:15px;"></button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger"
+                                data-ng-click="colors.removeItem($index);">
+                            <span class="fa fa-remove"></span>
+                        </button>
+                        <button class="btn btn-success"
+                                data-ng-click="colors.update($index)">
+                            <span class="fa fa-edit"></span>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+            <div class="clearfix"></div>
+
+
+        </div>
+    </div>
+</div>

@@ -24,6 +24,9 @@ export class ProductsUpdateController extends UpdateController<IProduct> {
     ) {
         super();
         this.setBreadcrumps();
+        this.conditions = {
+            "include": "colors,sizes,images,brand"
+        };
         this.getColors()
             .then(() => {
                 return this.getSizes();
@@ -66,6 +69,13 @@ export class ProductsUpdateController extends UpdateController<IProduct> {
                     text: 'Запись успешно обновлена'
                 });
                 this.SweetAlertService.showAlert();
+            }, (err) => {
+                this.SweetAlertService.setOptions({
+                    type: 'error',
+                    title: 'Ошибка!',
+                    text: 'Проверьте или все обязательные поля заполнены'
+                });
+                this.SweetAlertService.showAlert();
             });
     }
 
@@ -91,7 +101,9 @@ export class ProductsUpdateController extends UpdateController<IProduct> {
     }
 
     getCategories() {
-        return this.CategoriesService.getList()
+        return this.CategoriesService.getList({
+            'withoutParents': true
+        })
             .then((response) => {
                 this.categories = response.data;
             });

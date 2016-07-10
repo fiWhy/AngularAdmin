@@ -24,11 +24,13 @@ export class ListController<T> implements IListController<T> {
         if (this.loadMore || refresh) {
             this.loadMore = false;
 
-            this.service.getList(this.conditions).then((response) => {
+            return this.service.getList(this.conditions).then((response) => {
                 this.list = refresh ? response.data : this.list.concat(response.data);
-                this.pagination = response.meta.pagination;
-                if (this.pagination.current_page < this.pagination.total_pages)
-                    this.loadMore = true;
+                if (this.pagination) {
+                    this.pagination = response.meta.pagination;
+                    if (this.pagination.current_page < this.pagination.total_pages)
+                        this.loadMore = true;
+                }
             });
         }
     }

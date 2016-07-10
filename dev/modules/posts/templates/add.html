@@ -14,9 +14,9 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
-            <button type="button" data-ui-sref="posts.list" class="btn btn-primary">Назад</button>
-            <button type="button" data-ng-click="postsCreate.create();" class="btn btn-success">Создать</button>
-            <form class="form-horizontal form-label-left">
+            <button type="button" data-ui-sref="products.list" class="btn btn-primary">Назад</button>
+            <button type="button" data-ng-click="products.$valid && postsCreate.create();" class="btn btn-success">Создать</button>
+            <form name="products" class="form-horizontal form-label-left">
                 <uib-tabset active="activeForm">
                     <uib-tab heading="Основные настройки">
                         <div class="x_content">
