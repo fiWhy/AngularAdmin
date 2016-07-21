@@ -1,13 +1,13 @@
-﻿import {CreateController} from '../../../core/base/controller/create.controller';
-import {Breadcrump} from '../../../core/entity/breadcrumps.entity';
-import {IProduct, Product} from '../entities/products.entity';
-import {IColorsService} from '../services/colors.service';
-import {ISizesService} from '../services/sizes.service';
-import {IBrandsService} from '../services/brands.service';
-import {ICategoriesService} from '../services/categories.service';
-import {ILanguagesService} from '../../../core/services/languages/languages.service';
-import {ILanguage} from '../../../core/services/languages/entities/languages.entity';
-import {Image, IImage} from '../entities/images.entity';
+﻿import {CreateController} from '../../../../core/base/controller/create.controller';
+import {Breadcrump} from '../../../../core/entity/breadcrumps.entity';
+import {IProduct, Product} from '../../entities/products.entity';
+import {IColorsService} from '../../services/colors.service';
+import {ISizesService} from '../../services/sizes.service';
+import {IBrandsService} from '../../services/brands.service';
+import {ICategoriesService} from '../../services/categories.service';
+import {ILanguagesService} from '../../../../core/services/languages/languages.service';
+import {ILanguage} from '../../../../core/services/languages/entities/languages.entity';
+import {Image, IImage} from '../../entities/images.entity';
 
 export class ProductsCreateController extends CreateController<IProduct> {
     static $inject = ['ProductsService', 'ColorsService', 'SizesService', 'BrandsService', 'CategoriesService', 'LanguagesService', '$state', 'SweetAlertService'];

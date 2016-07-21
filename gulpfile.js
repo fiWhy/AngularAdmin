@@ -6,9 +6,10 @@ var inject = require('gulp-inject');
 var browsersync = require('browser-sync');
 var nodemon = require('gulp-nodemon');
 var port = 80;
-var url = 'application:' + port + '/';
+var url = 'absolut.loc:' + port + '/admin';
 var tsProject = tsc.createProject('tsconfig.json');
 var wiredep = require('wiredep').stream;
+var webpack = require('webpack-stream');
 
 gulp.task('default', ['watching'], function () {
     var options = {
@@ -32,6 +33,12 @@ gulp.task('default', ['watching'], function () {
     };
 
     browsersync(options);
+});
+
+gulp.task('webpack:build', function () {
+    return gulp.src(config.dev + 'app.ts')
+            .pipe(webpack(require('./webpack.config.js')))
+            .pipe(gulp.dest('./'));
 });
 
 gulp.task('watching', ['build'], function() {

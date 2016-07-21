@@ -9,6 +9,7 @@ export function bootstrap(
     MenuDirectiveServiceProvider.setMenuItem('Продукты', null, 'products.list', '', 'shop');
     MenuDirectiveServiceProvider.setMenuItem('Цвета', null, 'products.colors', '', 'shop');
     MenuDirectiveServiceProvider.setMenuItem('Бренды', null, 'products.brands', '', 'shop');
+    MenuDirectiveServiceProvider.setMenuItem('Категории', null, 'products.categories.parents', '', 'shop');
     $stateProvider
         .state('products', {
             url: "/products",
@@ -40,4 +41,31 @@ export function bootstrap(
             controllerAs: 'productsUpdate',
             templateUrl: "./app/modules/shop/templates/products/edit.html"
         });
+
+
+    $stateProvider.state('products.categories', {
+        url: "/categories",
+        abstract: true,
+        template: '<ui-view/>'
+    }).state('products.categories.sub', {
+        url: "/categories/:id",
+        controller: 'SubCategoriesController',
+        controllerAs: 'subcategories',
+        templateUrl: "./app/modules/shop/templates/categories/subcategories.list.html"
+    }).state('products.categories.parents', {
+        url: "/categories",
+        controller: 'CategoriesController',
+        controllerAs: 'categories',
+        templateUrl: "./app/modules/shop/templates/categories/categories.list.html"
+    }).state('products.categories.create', {
+        url: "/create",
+        controller: 'CategoriesCreateController',
+        controllerAs: 'categoriesCreate',
+        templateUrl: "./app/modules/shop/templates/categories/add.html"
+    }).state('products.categories.edit', {
+        url: "/update/:id",
+        controller: 'CategoriesUpdateController',
+        controllerAs: 'categoriesUpdate',
+        templateUrl: "./app/modules/shop/templates/categories/edit.html"
+    })
 };

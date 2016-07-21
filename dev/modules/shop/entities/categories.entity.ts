@@ -19,7 +19,7 @@ export class Category {
 
     fields;
 
-    constructor(category?: ICategory) {
+    constructor(category?) {
         this.id = category.id ? category.id : null;
         this.slug = category.slug ? category.slug : null;
         this.image = category.image ? category.image : null;

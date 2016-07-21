@@ -1,7 +1,7 @@
-﻿import {ListController, IListController} from '../../../core/base/controller/list.controller';
-import {Breadcrump} from '../../../core/entity/breadcrumps.entity';
-import {IColor, Color} from '../entities/colors.entity';
-import {IColorsService} from '../services/colors.service';
+﻿import {ListController, IListController} from '../../../../core/base/controller/list.controller';
+import {Breadcrump} from '../../../../core/entity/breadcrumps.entity';
+import {IColor, Color} from '../../entities/colors.entity';
+import {IColorsService} from '../../services/colors.service';
 
 export class ColorsController extends ListController<IColor>
     implements IListController<IColor> {
@@ -43,7 +43,7 @@ export class ColorsController extends ListController<IColor>
             });
     }
 
-    private update(index) {
+    public update(index) {
         this.service.update(this.list[index].id, this.list[index])
             .then(res => {
                 this.SweetAlertService.setOptions({
@@ -54,7 +54,7 @@ export class ColorsController extends ListController<IColor>
             });
     }
 
-    private removeItem(index: number) {
+    public removeItem(index: number) {
         this.SweetAlertService.setOptions({
             title: 'Вы уверены?',
             text: 'Вы не сможете восстановить эту запись!',

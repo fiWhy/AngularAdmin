@@ -11,6 +11,4 @@ export class CategoriesService extends BaseService<ICategory>
     constructor(public repository) {
         super();
     }
-
-
 }

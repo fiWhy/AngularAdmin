@@ -19,7 +19,7 @@ export class UpdateController<T> implements IUpdateControllerInterface<T> {
     }
 
     load(id) {
-        this.service.get(id, this.conditions).then((response) => {
+        return this.service.get(id, this.conditions).then((response) => {
             this.item = response.data;
         });
     }

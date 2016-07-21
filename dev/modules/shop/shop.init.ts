@@ -1,9 +1,19 @@
-﻿import {ProductsController} from './controllers/products.controller';
-import {ProductsUpdateController} from './controllers/products.update.controller';
-import {ProductsCreateController} from './controllers/products.create.controller';
+﻿//# Products
+import {ProductsController} from './controllers/products/products.controller';
+import {ProductsUpdateController} from './controllers/products/products.update.controller';
+import {ProductsCreateController} from './controllers/products/products.create.controller';
 
-import {ColorsController} from './controllers/colors.controller';
-import {BrandsController} from './controllers/brands.controller';
+//# Colors
+import {ColorsController} from './controllers/colors/colors.controller';
+
+//# Brands
+import {BrandsController} from './controllers/brands/brands.controller';
+
+//# Categories
+import {CategoriesController} from './controllers/categories/categories.controller';
+import {SubCategoriesController} from './controllers/categories/subcategories.controller';
+import {CategoriesUpdateController} from './controllers/categories/categories.update.controller';
+import {CategoriesCreateController} from './controllers/categories/categories.create.controller';
 
 //# Services
 import {ProductsService} from './services/products.service';
@@ -44,6 +54,12 @@ angular.module('app.modules.shop', [])
     .controller('ProductsController', ProductsController)
     .controller('ProductsUpdateController', ProductsUpdateController)
     .controller('ProductsCreateController', ProductsCreateController)
+
+    .controller('CategoriesController', CategoriesController)
+    .controller('SubCategoriesController', SubCategoriesController)
+    .controller('CategoriesUpdateController', CategoriesUpdateController)
+    .controller('CategoriesCreateController', CategoriesCreateController)
+
     .controller('ColorsController', ColorsController)
     .controller('BrandsController', BrandsController)
     .config(bootstrap);

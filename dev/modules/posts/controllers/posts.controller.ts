@@ -14,7 +14,6 @@ export class PostsController extends ListController<IPost> {
     private postTypes: Array<IPostTypes>;
     private languages: Array<ILanguage>
     private isEdit = false;
-    private helloDolly = { obj: true };
     constructor(
         private PostsService: IPostsService,
         private PostTypesService: IPostTypesService,
@@ -53,7 +52,7 @@ export class PostsController extends ListController<IPost> {
         });
     }
 
-    private removeItem(index: number) {
+    public removeItem(index: number) {
         this.SweetAlertService.setOptions({
             title: 'Вы уверены?',
             text: 'Вы не сможете восстановить эту запись!',

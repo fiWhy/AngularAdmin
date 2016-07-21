@@ -47,7 +47,7 @@ export class ListController<T> implements IListController<T> {
         this.load(true);
     }
 
-    private update(index) {
+    public update(index) {
         this.service.update(this.list[index].id, this.list[index])
             .then(res => {
                 this.alertService.setOptions({
@@ -58,7 +58,7 @@ export class ListController<T> implements IListController<T> {
             });
     }
 
-    private removeItem(index: number) {
+    public removeItem(index: number) {
         this.alertService.setOptions({
             title: 'Вы уверены?',
             text: 'Вы не сможете восстановить эту запись!',

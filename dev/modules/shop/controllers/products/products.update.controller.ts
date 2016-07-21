@@ -1,11 +1,11 @@
-﻿import {UpdateController} from '../../../core/base/controller/update.controller';
-import {Breadcrump} from '../../../core/entity/breadcrumps.entity';
-import {IProduct, Product} from '../entities/products.entity';
-import {Image} from '../entities/images.entity';
-import {IColorsService} from '../services/colors.service';
-import {ISizesService} from '../services/sizes.service';
-import {IBrandsService} from '../services/brands.service';
-import {ICategoriesService} from '../services/categories.service';
+﻿import {UpdateController} from '../../../../core/base/controller/update.controller';
+import {Breadcrump} from '../../../../core/entity/breadcrumps.entity';
+import {IProduct, Product} from '../../entities/products.entity';
+import {Image} from '../../entities/images.entity';
+import {IColorsService} from '../../services/colors.service';
+import {ISizesService} from '../../services/sizes.service';
+import {IBrandsService} from '../../services/brands.service';
+import {ICategoriesService} from '../../services/categories.service';
 
 export class ProductsUpdateController extends UpdateController<IProduct> {
     static $inject = ['ProductsService', 'ColorsService', 'SizesService', 'BrandsService', 'CategoriesService', '$state', 'SweetAlertService'];

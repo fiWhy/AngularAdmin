@@ -1,7 +1,7 @@
-﻿import {ListController, IListController} from '../../../core/base/controller/list.controller';
-import {Breadcrump} from '../../../core/entity/breadcrumps.entity';
-import {IProduct, Product} from '../entities/products.entity';
-import {IProductService} from '../services/products.service';
+﻿import {ListController, IListController} from '../../../../core/base/controller/list.controller';
+import {Breadcrump} from '../../../../core/entity/breadcrumps.entity';
+import {IProduct, Product} from '../../entities/products.entity';
+import {IProductService} from '../../services/products.service';
 
 export class ProductsController extends ListController<IProduct>
     implements IListController<IProduct> {
@@ -26,7 +26,7 @@ export class ProductsController extends ListController<IProduct>
         ];
     }
 
-    private removeItem(index: number) {
+    public removeItem(index: number) {
         this.SweetAlertService.setOptions({
             title: 'Вы уверены?',
             text: 'Вы не сможете восстановить эту запись!',

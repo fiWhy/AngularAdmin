@@ -1,7 +1,7 @@
-﻿import {ListController, IListController} from '../../../core/base/controller/list.controller';
-import {Breadcrump} from '../../../core/entity/breadcrumps.entity';
-import {IBrand, Brand} from '../entities/brands.entity';
-import {IBrandsService} from '../services/brands.service';
+﻿import {ListController, IListController} from '../../../../core/base/controller/list.controller';
+import {Breadcrump} from '../../../../core/entity/breadcrumps.entity';
+import {IBrand, Brand} from '../../entities/brands.entity';
+import {IBrandsService} from '../../services/brands.service';
 
 export class BrandsController extends ListController<IBrand>
     implements IListController<IBrand> {

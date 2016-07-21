@@ -7,5 +7,4 @@ import './shop/shop.init';
 import './slider/slider.init';
 
 import {modules} from './modules.list.config'
-
 angular.module('app.modules', [].concat(modules()));

@@ -1,0 +1,53 @@
+﻿<div class="page-title">
+    <div class="title_left">
+        <h3>
+            Подкатегории
+        </h3>
+
+        <div class="dataTables_length">
+            <breadcrumps data-items="subcategories.breadcrumps"></breadcrumps>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <button type="button" class="btn btn-success" data-ui-sref="products.categories.create">
+                <span class="fa fa-plus" aria-hidden="true"></span>
+            </button>
+
+            <table table-widget
+                   id="data-table-simple"
+                   class="responsive-table display jambo_table"
+                   cellspacing="0"
+                   data-title-translate="false"
+                   data-titles='[
+                                        "Заголовок",
+                                        "Изображение",
+                                        "Средства"
+                                      ]'>
+                <tr data-ng-repeat="item in subcategories.list">
+                    <td data-ng-bind="item.fields.ru.name.value"></td>
+                    <td class="col m3">
+                        <img style="max-width:150px" data-ng-src="{{ item.image }}" />
+                    </td>
+                    <td>
+                        <button class="btn btn-danger"
+                                data-ng-click="subcategories.removeItem($index);">
+                            <span class="fa fa-remove"></span>
+                        </button>
+                        <button class="btn btn-success"
+                                data-ui-sref="products.categories.edit({id: item.id})">
+                            <span class="fa fa-edit"></span>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+            <div class="clearfix"></div>
+
+
+        </div>
+    </div>
+</div>

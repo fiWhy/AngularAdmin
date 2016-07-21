@@ -1,0 +1,127 @@
+﻿<!-- Form with placeholder -->
+<div class="page-title">
+    <div class="title_left">
+        <h3>
+            Создание категории
+        </h3>
+        <div class="dataTables_length">
+            <breadcrumps data-items="categoriesCreate.breadcrumps"></breadcrumps>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+
+            <button type="button" data-ui-sref="products.categories.parents" class="btn btn-primary">Назад</button>
+            <button type="button" data-ng-click="categoriesCreate.create();" class="btn btn-success">Создать</button>
+            <form name="productsForm" class="form-horizontal form-label-left">
+                <uib-tabset active="activeForm">
+                    <uib-tab heading="Основные настройки">
+                        <div class="x_content">
+
+                            <!-- Active -->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Активная
+                                </label>
+                                <div>
+                                    <input type="checkbox"
+                                           class="js-switch"
+                                           ui-switch
+                                           data-ng-model="categoriesCreate.item.active" />
+                                </div>
+                            </div>
+
+                            <!-- Category -->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Является ли дочерней?
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <ui-select data-ng-model="categoriesCreate.item.parent_id"
+                                               theme="bootstrap"
+                                               close-on-select="true"
+                                               title="Выберите категорию">
+                                        <ui-select-match placeholder="Категорию...">{{ $select.selected.fields.ru.name.value }}</ui-select-match>
+                                        <ui-select-choices repeat="category.id as category in categoriesCreate.categories | filter:$select.search">
+                                            {{ category.fields.ru.name.value }}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <!-- Primary image -->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Изображение <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <elfinder data-callback="categoriesCreate.getImage(file);">
+                                        <img data-ng-if="categoriesCreate.item.image" style="width:100%;" data-ng-src="{{ categoriesCreate.item.image }}" />
+                                        <span data-ng-if="!categoriesCreate.item.image" class="btn btn-default">Выбрать</span>
+                                    </elfinder>
+                                </div>
+                            </div>
+                        </div>
+                    </uib-tab>
+
+                    <uib-tab data-ng-repeat="(key, language) in categoriesCreate.languages"
+                             heading="{{ language.shortcode }}">
+                        <div class="x_content">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Заголовок <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text"
+                                    required
+                                    data-ng-model="categoriesCreate.item.fields[language.shortcode].name.value"
+                                    class="form-control col-md-7 col-xs-12"
+                                    data-ng-init="categoriesCreate.item.fields[language.shortcode].name.language_id = language.id">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Мета заголовок
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text"
+                                           data-ng-model="categoriesCreate.item.fields[language.shortcode].meta_title.value"
+                                           class="form-control col-md-7 col-xs-12"
+                                           data-ng-init="categoriesCreate.item.fields[language.shortcode].meta_title.language_id = language.id">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Мета ключевые слова
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea data-ng-model="categoriesCreate.item.fields[language.shortcode].meta_keywords.value"
+                                              class="form-control col-md-7 col-xs-12"
+                                              data-ng-init="categoriesCreate.item.fields[language.shortcode].meta_keywords.language_id = language.id"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Мета описание
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea data-ng-model="categoriesCreate.item.fields[language.shortcode].meta_description.value"
+                                              class="form-control col-md-7 col-xs-12"
+                                              data-ng-init="categoriesCreate.item.fields[language.shortcode].meta_description.language_id = language.id"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </uib-tab>
+
+                </uib-tabset>
+            </form>
+        </div>
+    </div>
+</div>
