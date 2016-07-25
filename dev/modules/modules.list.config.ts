@@ -5,7 +5,8 @@ var modules = () => [
     'app.modules.carrental',
     'app.modules.posts',
     'app.modules.shop',
-    'app.modules.slider'
+    'app.modules.slider',
+    'app.modules.menu'
 ];
 
 export {modules};

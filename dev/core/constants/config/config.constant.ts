@@ -12,7 +12,8 @@ export function ConfigConstant() {
             posts: apiUrl + 'posts/:id',
             postTypes: apiUrl + 'post_types/:id',
             shop: apiUrl + 'shop/:id',
-            menu: apiUrl + 'menu/:id?include=children',
+            menu: apiUrl + 'menu/:id',
+            menuItems: apiUrl + 'menuItems/:id',
 
             size: apiUrl + 'size/:id',
             brand: apiUrl + 'brand/:id',
